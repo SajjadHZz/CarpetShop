@@ -1,0 +1,198 @@
+/* /////////////////////////////////😎 MAIN SECTION 😎//////////////////////////////////// */
+.sliderProducts {
+  --widthSlide: 15rem;
+  --heightSlide: 27rem;
+  --widthImg: 13rem;
+  --heightImg: 20rem;
+  padding: 1rem 2rem;
+  user-select: none;
+  position: relative;
+}
+.sliderProducts__titleBoxCont {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 5px;
+}
+.sliderProducts__titleSlider {
+  font-family: "Shabnam-Medium";
+  background-color: red;
+  border-radius: 1rem;
+  color: white;
+  padding: 5px 10px;
+}
+.sliderProducts__linkShowAll {
+  background-color: gainsboro;
+  flex: 1;
+  font-family: "Shabnam-Light";
+  font-size: small;
+  border-radius: 0 1rem 1rem 0;
+  display: inherit;
+  justify-content: flex-end;
+  align-items: center;
+  padding-left: 1rem;
+}
+
+/* ////////////////////////////  * SLIDE SECTION * ///////////////////////// */
+.sliderProducts__container {
+  width: var(--widthSlide);
+  height: var(--heightSlide);
+  margin: 2rem 10px;
+  border-radius: 1rem;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  background-color: ghostwhite;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all ease 200ms 100ms;
+}
+.sliderProducts__container:hover {
+  transform: scale(1.05);
+}
+/* /////////////////// IMAGE CONTAINER 🖼 /////////////////// */
+.sliderProducts__imgCont {
+  height: var(--heightImg);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+/* DISCOUNT */
+.sliderProducts__productDiscount {
+  position: absolute;
+  top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  font-family: "Shabnam-Medium";
+  padding: 0 1rem;
+}
+.productDiscount__title {
+  color: red;
+  text-shadow: 0 0 0 white;
+}
+.productDiscount__discount {
+  background-color: red;
+  padding: 3px 8px;
+  color: white;
+  border-radius: 1rem;
+  font-size: small;
+}
+/* IMAGE */
+.sliderProducts__imgProduct {
+  width: 100%;
+
+  height: 100%;
+  object-fit: cover;
+}
+/* ICONS */
+.sliderProducts__iconCont {
+  position: absolute;
+  right: -20%;
+  bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  border: 2px solid white;
+  border-radius: 2rem;
+  /* background-color: red; */
+  padding: 5px;
+  font-family: "Shabnam-Light";
+  transition: all ease 200ms 50ms;
+  font-size: small;
+}
+.sliderProducts__container:hover .sliderProducts__iconCont {
+  right: 10px;
+}
+
+.sliderProducts__icon {
+  font-size: x-large;
+  cursor: pointer;
+  color: white;
+  transition: all ease 200ms 50ms;
+}
+.sliderProducts__icon:hover {
+  font-size: xx-large;
+}
+
+/* /////////////////// BOTTOM SECTION ⬇ /////////////////// */
+/* TITLE */
+.sliderProducts__productTitle {
+  font-family: "Shabnam-Medium";
+  text-align: center;
+  line-height: 1.3rem;
+  padding: 0 10px;
+  height: 50px;
+}
+/* PRICE CONTAINER */
+.sliderProducts__priceCont {
+  font-family: "Shabnam-Light";
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: small;
+  color: black;
+  width: 100%;
+  padding: 10px 1rem;
+}
+.sliderProducts__nowPrice {
+  font-weight: bold;
+}
+.sliderProducts__prevPrice {
+  position: relative;
+}
+.sliderProducts__prevPrice::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: rotate(5deg);
+  width: 100%;
+  height: 1px;
+  background-color: red;
+}
+
+/* ////////////////////////////  * BUTTONS SECTION * ///////////////////////// */
+.sliderProducts__btnNext,
+.sliderProducts__btnPrev {
+  position: absolute;
+  width: 3rem;
+  height: 5rem;
+  background-color: #fff;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid;
+  z-index: 1;
+}
+.sliderProducts__btnNext {
+  border-radius: 1rem 0 0 1rem;
+  right: 0rem;
+}
+.sliderProducts__btnPrev {
+  border-radius: 0 1rem 1rem 0;
+  left: 0rem;
+}
+.sliderProducts__btnNext::after,
+.sliderProducts__btnPrev::after {
+  content: "";
+  border-bottom: 1px solid;
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+}
+.sliderProducts__btnNext::after {
+  border-right: 1px solid;
+  transform: rotate(-45deg);
+}
+.sliderProducts__btnPrev::after {
+  border-left: 1px solid;
+  transform: rotate(45deg);
+}

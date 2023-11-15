@@ -1,0 +1,30 @@
+#range-slider {
+  background: var(--colorFour);
+  z-index: 1;
+}
+
+#range-slider .range-slider__range {
+  background: var(--colorTow);
+  transition: height 0.3s;
+}
+
+#range-slider .range-slider__thumb {
+  border: 5px solid var(--colorTow);
+  box-sizing: border-box;
+  transition: transform 0.3s;
+}
+#range-slider .range-slider__thumb[data-lower] {
+  background: var(--colorThree);
+}
+
+#range-slider .range-slider__thumb[data-upper] {
+  background: var(--colorFive);
+}
+
+#range-slider .range-slider__thumb[data-active] {
+  transform: translate(-50%, -50%) scale(1.25);
+}
+
+#range-slider .range-slider__range[data-active] {
+  height: 16px;
+}

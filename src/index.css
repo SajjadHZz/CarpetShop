@@ -1,0 +1,46 @@
+@import url("./fonts/fonts.css");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --colorOne: #031321;
+  --colorTow: #003388;
+  --colorThree: #1e90ff;
+  --colorFour: #f0f0f0;
+  --colorFive: #ed2721;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  width: 100vw;
+  overflow-x: hidden;
+  background-color: var(--colorFour);
+}
+
+::-webkit-scrollbar {
+  background-color: var(--colorFour);
+  width: 7px;
+}
+::-webkit-scrollbar-button {
+  display: none;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--colorTow);
+  border-radius: 1rem;
+  border: 1px solid var(--colorFour);
+}
+
+.none_scroolbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}

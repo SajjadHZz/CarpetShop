@@ -1,0 +1,18 @@
+/* /////////////////////////////////// MAIN SECTION //////////////////////////////////// */
+.effectiveCards {
+  --widthSlider: 18rem;
+  --heightSlider: 30rem;
+  width: var(--widthSlider);
+}
+
+/* /////////////////////////////////// SLIDER SECTION //////////////////////////////////// */
+
+.effectiveCards__icon {
+  font-size: x-large;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: all ease 200ms 50ms;
+}
+.effectiveCards__icon:hover {
+  color: var(--colorFive);
+}

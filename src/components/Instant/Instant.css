@@ -1,0 +1,53 @@
+.instantTitle {
+  font-family: "Shabnam-Bold";
+  position: absolute;
+  inset: 0;
+  margin: 0 auto;
+  width: fit-content;
+  height: fit-content;
+  background-color: var(--colorFive);
+  color: white;
+  border-radius: 0 0 10px 10px;
+  padding: 10px 15px;
+  z-index: 1;
+}
+
+.instant__productImg {
+  animation: zoom ease 7s forwards;
+}
+
+/* /////////////////////////// CONTENT CONTAINER /////////////////////////// */
+
+.instant__productTitle::after {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-left: 2px solid white;
+  border-top: 2px solid white;
+  position: absolute;
+  bottom: 0;
+  animation: hoverMe ease 3s infinite;
+}
+.instant:hover .instant__productTitle::after {
+  display: none;
+}
+
+/* /////////////////////////// ANIMATIONS /////////////////////////// */
+@keyframes zoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+@keyframes hoverMe {
+  0%,
+  100% {
+    transform: translateY(0) rotate(45deg);
+  }
+  50% {
+    transform: translateY(5px) rotate(45deg);
+  }
+}

@@ -1,0 +1,63 @@
+/* ///////////////////////////// MAIN SECTION ////////////////////////////// */
+.blogInstant {
+  width: 90%;
+  padding: 1rem 2rem;
+  margin: 0 auto;
+  border: 2px solid;
+  background: #fff;
+}
+
+/* ///////////////////////////// TITLE SECTION ////////////////////////////// */
+.blogInstant__titleBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: xx-large;
+}
+.blogInstant__title {
+  flex: 1;
+  font-family: "Shabnam-Bold";
+  font-size: large;
+}
+.blogInstant__btnNext,
+.blogInstant__btnPrev {
+  cursor: pointer;
+}
+.blogInstant__btnNext:hover,
+.blogInstant__btnPrev:hover {
+  transform: scale(1.05);
+}
+
+/* ///////////////////////////// SLIDER SECTION ////////////////////////////// */
+.blogInstant__blogCont {
+  font-family: "Shabnam-Light";
+  cursor: pointer;
+}
+.blogInstant__Img {
+  width: 100%;
+  height: 10rem;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+.blogInstant__desc {
+  margin-bottom: 10px;
+  transition: all ease 200ms 50ms;
+}
+.blogInstant__desc:hover {
+  color: var(--colorFive);
+  transform: scale(1.02) translateX(-5px);
+}
+.blogInstant__dataCont {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+}
+.blogInstant__blogDate {
+  font-size: small;
+}
+.blogInstant__blogAuthor {
+  font-size: small;
+  color: var(--colorTow);
+}
