@@ -60,7 +60,7 @@ export default function DetailsBlog() {
         {/* ////////////// BLOG ///////////// */}
         <div className="w-full lg:w-2/3 ">
           <img
-            src="public/img/Carpets/Show-Carpets/03.jpg"
+            src="images/Carpets/Show-Carpets/03.jpg"
             alt="Blog Image"
             className="w-full lg:w-3/4 object-cover"
           />
@@ -113,7 +113,7 @@ export default function DetailsBlog() {
               <p className="font-[Shabnam-Medium] mb-3">شاید برای شما جالب باشد</p>
               <Link to="/detailsblog" className="flex gap-2">
                 <img
-                  src="public/img/Carpets/Show-Carpets/05.jpg"
+                  src="images/Carpets/Show-Carpets/05.jpg"
                   alt=""
                   className="w-32 h-20 object-cover rounded-xl"
                 />
@@ -176,7 +176,7 @@ export default function DetailsBlog() {
               تابلوفرش مزین به تمثال مبارک شما یا عزیزانتان در دکوراسیون منزل، بسیار خوشایند است. می‌گویید نه
               امتحان بفرمایید!
             </p>
-            <img src="public/img/Carpets/Show-Carpets/01.jpg" alt="" className="mt-3 w-full" />
+            <img src="images/Carpets/Show-Carpets/01.jpg" alt="" className="mt-3 w-full" />
             <p className="text-justify mt-3">
               بزرگ‌ترین لذت عید نوروز در کودکی و چه‌بسا نوجوانی ما به‌غیراز خرید لباس‌های نو و آجیل‌ها و
               شیرینی‌های جذاب (البته برای ما دهه شصتی‌ها جذاب بود، شما را نمی‌دانم!)، زمانی بود که اسکناس‌های
@@ -228,7 +228,7 @@ export default function DetailsBlog() {
             <div className="mt-3 flex items-center justify-between gap-3">
               <Link to="/detailsblog" className="w-full sm:w-1/2 md:w-1/3">
                 <img
-                  src="public/img/Carpets/Show-Carpets/04.png"
+                  src="images/Carpets/Show-Carpets/04.png"
                   alt="Image"
                   className="w-full h-40 object-cover rounded-xl transition duration-500 hover:brightness-75"
                 />
@@ -238,7 +238,7 @@ export default function DetailsBlog() {
               </Link>
               <Link to="/detailsblog" className="hidden sm:inline-block sm:w-1/2 md:w-1/3">
                 <img
-                  src="public/img/Carpets/Show-Carpets/04.png"
+                  src="images/Carpets/Show-Carpets/04.png"
                   alt="Image"
                   className="w-full h-40 object-cover rounded-xl transition duration-500 hover:brightness-75"
                 />
@@ -248,7 +248,7 @@ export default function DetailsBlog() {
               </Link>
               <Link to="/detailsblog" className="hidden md:inline-block md:w-1/3">
                 <img
-                  src="public/img/Carpets/Show-Carpets/04.png"
+                  src="images/Carpets/Show-Carpets/04.png"
                   alt="Image"
                   className="w-full h-40 object-cover rounded-xl transition duration-500 hover:brightness-75"
                 />
@@ -314,7 +314,7 @@ export default function DetailsBlog() {
             <div className="font-[Shabnam-Medium]">
               <Link to="/detailsblog" className="flex gap-2 my-3">
                 <img
-                  src="public/img/Carpets/Show-Carpets/05.jpg"
+                  src="images/Carpets/Show-Carpets/05.jpg"
                   alt="Image"
                   className="w-24 h-16 object-cover rounded-xl"
                 />
@@ -327,7 +327,7 @@ export default function DetailsBlog() {
               </Link>
               <Link to="/detailsblog" className="flex gap-2 my-3">
                 <img
-                  src="public/img/Carpets/Show-Carpets/05.jpg"
+                  src="images/Carpets/Show-Carpets/05.jpg"
                   alt="Image"
                   className="w-24 h-16 object-cover rounded-xl"
                 />
@@ -340,7 +340,7 @@ export default function DetailsBlog() {
               </Link>
               <Link to="/detailsblog" className="flex gap-2 my-3">
                 <img
-                  src="public/img/Carpets/Show-Carpets/05.jpg"
+                  src="images/Carpets/Show-Carpets/05.jpg"
                   alt="Image"
                   className="w-24 h-16 object-cover rounded-xl"
                 />

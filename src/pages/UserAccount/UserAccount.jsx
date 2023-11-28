@@ -38,11 +38,61 @@ const listLinks = [
   { id: 8, label: "تنظیمات حساب", icon: <FaRegUserCircle /> },
 ];
 
+import axios from "axios";
+
 export default function UserAccount() {
   const [openAccountFeatures, setOpenAccountFeatures] = useState();
 
   const handleOpenAccountFeatures = (value) =>
     setOpenAccountFeatures(openAccountFeatures === value ? 0 : value);
+
+  // const sendHandler = () => {
+  //   axios
+  //     .post("https://realmiddle.backendless.app/api/data/Products", {
+  //       brand: "پامچال",
+  //       pattern: "سنتی",
+  //       title: "فرش 1200 شانه طرح گیلدا با زمینه صدفی کد 14561",
+  //       srcGallery: [
+  //         "images/Carpets/Machine/01/01.jpg",
+  //         "images/Carpets/Machine/01/02.jpg",
+  //         "images/Carpets/Machine/01/03.jpg",
+  //         "images/Carpets/Machine/01/04.jpg",
+  //         "images/Carpets/Machine/01/05.jpg",
+  //         "images/Carpets/Machine/01/06.jpg",
+  //         "images/Carpets/Machine/01/07.jpg",
+  //         "images/Carpets/Machine/01/08.jpg",
+  //         "images/Carpets/Machine/01/09.jpg",
+  //       ],
+  //       attributes: [
+  //         { name: "رنگ پس زمینه", value: "صدفی" },
+  //         { name: "تعداد شانه", value: "1200 شانه" },
+  //         { name: "ضخامت فرش", value: "7 + 1 میلی متر" },
+  //         { name: "جنس فرش", value: "پلی استر پنبه" },
+  //         { name: "سایر مشخصات", value: "بدون پرز _ ضد حساسیت و آلرژی" },
+  //       ],
+  //       colors: ["صدفی", "#e1fefe"],
+  //       comb: 1200,
+  //       dimensions: [
+  //         { size: "12 متر", price: 3_345_000 },
+  //         { size: "9 متر", price: 2_866_000 },
+  //         { size: "6 متر", price: 2_105_000 },
+  //       ],
+  //       discount: {
+  //         percent: 5,
+  //         timeDiscount: "2023/12/7",
+  //       },
+  //       labels: ["پذیرایی", "آشپزخانه", "اتاق خواب"],
+  //     })
+  //     .then((res) => {
+  //       alert("ok");
+  //     });
+  // };
+
+  // const sendHandler = () => {
+  //   axios.get("https://realmiddle.backendless.app/api/data/Products").then((res) => {
+  //     console.log(res);
+  //   });
+  // };
 
   return (
     <>
@@ -53,10 +103,10 @@ export default function UserAccount() {
         <div className="w-full md:w-1/4">
           <div className="flex flex-col items-center bg-white border border-solid border-gray-300 rounded-xl overflow-hidden">
             <div className="mt-2 relative">
-              <Avatar src="public/img/Profiles/Profile12.png" alt="avatar" size="xl" />
-              <MdModeEditOutline className="absolute bottom-0 left-0 bg-gray-50 rounded-full p-0.5 w-5 h-5" />
+              <Avatar src="images/undefiend.png" alt="avatar" size="xl" />
+              <MdModeEditOutline className="absolute bottom-0 left-0 bg-gray-50 rounded-full p-0.5 w-5 h-5 border border-solid border-gray-500 cursor-pointer hover:scale-110 transition-transform" />
             </div>
-            <h2 className="mt-2 font-bold">sajjad hossein zadeh</h2>
+            <h2 className="mt-2 font-bold">سجاد حسین زاده</h2>
             <div className="mt-4 border-t border-solid divide-x divide-x-reverse divide-solid flex w-full justify-evenly items-center">
               <div className="py-2 flex flex-1 flex-col items-center gap-2 cursor-pointer transition hover:bg-[var(--colorFive)] hover:text-white">
                 <GiHeartKey />
@@ -114,7 +164,51 @@ export default function UserAccount() {
           </Accordion>
         </div>
         {/* ------------------- CONTENTS ------------------- */}
-        <div className="w-full md:w-3/4 bg-white"></div>
+        <div className="w-full md:w-3/4">
+          <div className="mb-10 bg-white border border-solid border-gray-300 rounded-xl p-5">
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="font-[Shabnam-Bold] font-bold text-lg after:absolute after:-bottom-2 relative after:right-0 after:inline-block after:w-full after:h-1 after:bg-red-500">
+                سفارش های من
+              </h3>
+              <a href="#" className="text-[var(--colorFive)] text-sm font-bold ">
+                مشاهده همه
+              </a>
+            </div>
+            <div className="flex justify-around text-center font-bold text-xs divide-x divide-solid divide-gray-200 divide-x-reverse">
+              <div className="flex-1 flex flex-col items-center">
+                <img src="images/order-pending.png" alt="Logo" className="w-20" />
+                <p>در انتظار پرداخت</p>
+                <p className="mt-2 text-sm">0 سفارش</p>
+              </div>
+              <div className="flex-1 flex flex-col items-center">
+                <img src="images/order-on-hold.png" alt="Logo" className="w-20" />
+                <p>در انتظار بررسی</p>
+                <p className="mt-2 text-sm">0 سفارش</p>
+              </div>
+              <div className="flex-1 flex flex-col items-center">
+                <img src="images/order-completed.png" alt="Logo" className="w-20" />
+                <p>تکمیل شده</p>
+                <p className="mt-2 text-sm">0 سفارش</p>
+              </div>
+              <div className="flex-1 flex flex-col items-center">
+                <img src="images/order-cancelled.png" alt="Logo" className="w-20" />
+                <p>لغو شده</p>
+                <p className="mt-2 text-sm">0 سفارش</p>
+              </div>
+            </div>
+          </div>
+          <div className="mb-10 bg-white border border-solid border-gray-300 rounded-xl p-5">
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="font-[Shabnam-Bold] font-bold text-lg after:absolute after:-bottom-2 relative after:right-0 after:inline-block after:w-full after:h-1 after:bg-red-500">
+                مورد علاقه های من
+              </h3>
+              <a href="#" className="text-[var(--colorFive)] text-sm font-bold ">
+                مشاهده همه
+              </a>
+            </div>
+            <p className="">لیست شما خالی می باشد.</p>
+          </div>
+        </div>
       </div>
       <Footer />
     </>

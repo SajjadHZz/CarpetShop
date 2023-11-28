@@ -1,5 +1,5 @@
 /////////////////////  * REACT & CSS *   ////////////////////////
-import React, { useEffect, useState, useRef } from "react";
+import React, { useContext, useRef } from "react";
 import "./Instant.css";
 
 /////////////////////  * SWIPER *   ////////////////////////
@@ -23,6 +23,9 @@ import { machineProducts } from "../../Datas";
 /////////////////////  * REACT ROUTER DOM *   ////////////////////////
 import { Link } from "react-router-dom";
 
+/////////////////////  * REACT ROUTER DOM *   ////////////////////////
+import QuickAccessModal from "../../context/QuickAccessModal";
+
 /////////////////////////////////////////////////////  *** START MAIN FUNCTION ***   //////////////////////////////////////////////////////
 export default function Instant() {
   //  * VARIABELS & FUNCTIONS *  //
@@ -40,7 +43,10 @@ export default function Instant() {
     progressBar.current.style.setProperty("width", `${(1 - progress) * 100}%`);
   };
 
+  const { openQuicklyModal, setOpenQuicklyModal, setProductChosedId } = useContext(QuickAccessModal);
+
   //  * RENDER *  //
+
   return (
     <div
       onMouseEnter={mouseEnterHandler}
@@ -75,7 +81,7 @@ export default function Instant() {
 
               <div className="py-2 px-4 bg-white font-[Shabnam-Light] h-full">
                 <Link
-                  to="/detailsproduct"
+                  to={`/${slideContent.id}`}
                   className="text-lg md:text-base overflow-hidden -mt-24 mb-12 relative text-white h-12 transition-all flex flex-col justify-between items-center font-[Shabnam-Medium] group-hover:block group-hover:mt-1 group-hover:mb-5 group-hover:text-black"
                 >
                   {slideContent.title}
@@ -95,7 +101,13 @@ export default function Instant() {
                       </Link>
                     </Tooltip>
                     <Tooltip content="مشاهده سریع" className="font-[Shabnam-Light]">
-                      <IconButton className="w-8 h-8 md:w-6 md:h-6 bg-transparent text-black shadow-none hover:shadow-none">
+                      <IconButton
+                        onClick={() => {
+                          setOpenQuicklyModal(!openQuicklyModal);
+                          setProductChosedId(slideContent.id - 1);
+                        }}
+                        className="w-8 h-8 md:w-6 md:h-6 bg-transparent text-black shadow-none hover:shadow-none"
+                      >
                         <BiSearchAlt className="transition-colors w-6 h-6 md:w-5 md:h-5 hover:text-[var(--colorFive)]" />
                       </IconButton>
                     </Tooltip>
@@ -104,7 +116,7 @@ export default function Instant() {
                     {slideContent.dimensions[0].price.toLocaleString("fa-ir")} تومان
                   </p>
                 </div>
-                <Link to="/detailsproduct">
+                <Link to={`/${slideContent.id}`}>
                   <Button
                     fullWidth
                     className="font-[Shabnam-Medium] bg-[var(--colorFive)] text-white border-2 border-solid border-transparent outline-none py-2 px-4 rounded transition hover:bg-transparent hover:border-[var(--colorFive)] hover:text-[var(--colorFive)]"

@@ -18,7 +18,7 @@ export default function BlogNavbar() {
       <nav className="px-2 lg:px-16 py-1 bg-white sticky top-0 z-10 border-b border-solid border-gray-300">
         <div className="px-5 flex justify-between items-center">
           <Link to="/blog">
-            <img src="public/Logo.png" alt="" className="w-40" />
+            <img src="Logo.png" alt="" className="w-40" />
           </Link>
 
           <ul className="hidden md:flex items-center gap-4 font-[Shabnam-Light]">
@@ -55,7 +55,7 @@ export default function BlogNavbar() {
       <Drawer open={open} onClose={closeDrawer} className="p-4">
         <div className="mb-6 flex items-center justify-between">
           <Link to="/blog">
-            <img src="public/Logo.png" alt="" className="w-28" />
+            <img src="Logo.png" alt="" className="w-28" />
           </Link>
           <IconButton variant="text" color="blue-gray" onClick={closeDrawer}>
             <svg

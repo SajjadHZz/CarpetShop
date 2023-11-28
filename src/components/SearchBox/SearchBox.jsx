@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState, useContext } from "react";
+import QuickAccessModal from "../../context/QuickAccessModal";
 import "./SearchBox.css";
 
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const optionValues = [
   { label: "فرش ماشینی", value: "name" },
@@ -11,8 +12,17 @@ const optionValues = [
 ];
 
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
+import { machineProducts } from "../../Datas";
 
 export default function SearchBox() {
+  const searchInput = useRef();
+  // useEffect(() => {
+  //   console.log(searchInput.current.value);
+  // }, [searchInput]);
+
+  const { setOpenAlert, setAlertMessage } = useContext(QuickAccessModal);
+
+  const [searchProudcts, setSearchProudcts] = useState([]);
   const [isSearch, setIsSearch] = useState(false);
   const [isOpenSearchFilter, setIsOpenSearchFilter] = useState(false);
   const [valueSearchFilter, setValueSearchFilter] = useState(optionValues[0].label);
@@ -26,8 +36,21 @@ export default function SearchBox() {
     setIsOpenSearchFilter(false);
   };
   const searchHandler = () => {
-    setIsSearch(!isSearch);
     setIsOpenSearchFilter(false);
+    if (searchInput.current.value.trim().length > 2) {
+      setIsSearch(!isSearch);
+      setSearchProudcts(
+        machineProducts.filter((item) => {
+          return item.title.includes(searchInput.current.value);
+        })
+      );
+    } else {
+      setAlertMessage("لطفا بیش از ۳ کاراکتر وارد کنید");
+      setOpenAlert(true);
+      setTimeout(() => {
+        setOpenAlert(false);
+      }, 5000);
+    }
   };
   return (
     <div className="w-[25rem] relative hidden md:flex flex-col justify-between items-stretch font-[Shabnam-Light]">
@@ -64,7 +87,7 @@ export default function SearchBox() {
           </div>
         </div>
 
-        <input type="text" placeholder="جستجو ..." className="px-3 outline-none flex-1" />
+        <input ref={searchInput} type="text" placeholder="جستجو ..." className="px-3 outline-none flex-1" />
         <button onClick={searchHandler} className={`${isSearch && "-is-loading"} searchBox__submit ml-4`}>
           <span className="w-[1px] h-[1px] p-0 -m-[1px] overflow-hidden border-none"></span>
         </button>
@@ -74,28 +97,27 @@ export default function SearchBox() {
       <div
         className={`${
           isSearch ? "flex" : "hidden"
-        } flex-col absolute z-[1] shadow-xl bg-[var(--colorFour)] top-3 pt-8 rounded-xl w-full max-h-60 overflow-hidden`}
+        } flex-col absolute z-[1] shadow-xl bg-[var(--colorFour)] top-3 pt-8 rounded-xl w-full max-h-60 overflow-auto`}
       >
-        <Link
-          to="/detailsproduct"
-          className="flex items-center justify-between gap-3 w-full p-2 cursor-pointer transition hover:bg-gray-50 "
-        >
-          <div>
-            <img src="public/img/Carpets/03.jpg" alt="" className="w-14 h-14 rounded-full inline-block" />
-            <p className="mr-2 inline-block">فرش طلایی مشکی مدل آراد کد </p>
-          </div>
-          <p className="text-sm text-[var(--colorFive)] font-bold">2,345,000 تومان</p>
-        </Link>
-        <Link
-          to="/detailsproduct"
-          className="flex items-center justify-between gap-3 w-full p-2 cursor-pointer transition hover:bg-gray-50 "
-        >
-          <div>
-            <img src="public/img/Carpets/03.jpg" alt="" className="w-14 h-14 rounded-full inline-block" />
-            <p className="mr-2 inline-block">فرش طلایی مشکی مدل آراد کد </p>
-          </div>
-          <p className="text-sm text-[var(--colorFive)] font-bold">2,345,000 تومان</p>
-        </Link>
+        {searchProudcts.length === 0 ? (
+          <p className="w-full text-center p-2 text-[var(--colorFive)]">محصولی یافت نشد</p>
+        ) : (
+          searchProudcts.map((item) => {
+            return (
+              <NavLink
+                to={`/${item.id}`}
+                className="flex items-center gap-2 w-full p-2 cursor-pointer transition hover:bg-gray-50 "
+              >
+                <img
+                  src={item.srcGallery[0]}
+                  alt=""
+                  className="w-10 h-10 object-cover rounded-full inline-block"
+                />
+                <p className="text-sm inline-block">{item.title}</p>
+              </NavLink>
+            );
+          })
+        )}
       </div>
     </div>
   );

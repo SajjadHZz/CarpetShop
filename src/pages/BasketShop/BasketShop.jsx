@@ -37,7 +37,7 @@ export default function BasketShop() {
                   accomplished ? "accomplished" : null
                 } bg-[var(--colorFour)] rounded-full overflow-visible w-fit`}
               >
-                <img src="public/img/Icons/basket.png" alt="Logo" className="w-16 h-16 mb-2" />
+                <img src="images/Icons/basket.png" alt="Logo" className="w-16 h-16 mb-2" />
                 <p className="">سبد خرید</p>
               </div>
             )}
@@ -49,7 +49,7 @@ export default function BasketShop() {
                   accomplished ? "accomplished" : null
                 } bg-[var(--colorFour)] rounded-full overflow-visible`}
               >
-                <img src="public/img/Icons/tracking.png" alt="Logo" className="w-16 h-16 mb-2" />
+                <img src="images/Icons/tracking.png" alt="Logo" className="w-16 h-16 mb-2" />
                 <p className="">آدرس شما</p>
               </div>
             )}
@@ -61,7 +61,7 @@ export default function BasketShop() {
                   accomplished ? "accomplished" : null
                 } bg-[var(--colorFour)] rounded-full overflow-visible`}
               >
-                <img src="public/img/Icons/give-money.png" alt="Logo" className="w-16 h-16 mb-2" />
+                <img src="images/Icons/give-money.png" alt="Logo" className="w-16 h-16 mb-2" />
                 <p className="">پرداخت مبلغ</p>
               </div>
             )}
@@ -74,7 +74,7 @@ export default function BasketShop() {
         <div className="w-full lg:w-2/3">
           <div className="relative bg-white px-1 py-2 sm:p-2 flex rounded-xl shadow mb-3">
             <AiOutlineCloseCircle className="absolute top-2 left-2 w-5 h-5 cursor-pointer transition-colors duration-300 hover:text-[var(--colorFive)]" />
-            <img src="public/img/Carpets/02.jpg" alt="Product" className="ml-5 w-32" />
+            <img src="images/Carpets/02.jpg" alt="Product" className="ml-5 w-32" />
             <div className="flex flex-col justify-between flex-1">
               <div className="mt-4">
                 <h3 className="text-sm sm:text-base inline-block ml-3 font-bold">
@@ -137,9 +137,11 @@ export default function BasketShop() {
               <p>مبلغ قابل پرداخت :</p>
               <p>17654654 ـومان</p>
             </div>
-            <Button fullWidth className="font-[Shabnam-Light] bg-[var(--colorFive)]">
-              ادامه مراحل پرداخت
-            </Button>
+            <Link to="/location">
+              <Button fullWidth className="font-[Shabnam-Light] bg-[var(--colorFive)]">
+                ادامه مراحل پرداخت
+              </Button>
+            </Link>
           </div>
 
           {/* --- HELP --- */}

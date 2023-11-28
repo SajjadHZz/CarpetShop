@@ -1,12 +1,12 @@
-import React from "react";
+import React, { memo } from "react";
 import "./Breadcrumb.css";
 
 import { BiSolidHomeSmile } from "react-icons/bi";
 import { RiArrowDropLeftLine } from "react-icons/ri";
 
-import { Breadcrumbs } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
 
-export default function Breadcrumb() {
+const Breadcrumb = memo(({ url, thisPage }) => {
   return (
     <nav
       className=" font-[Shabnam-Medium] hidden md:flex px-5 py-3 shadow rounded-lg my-4 bg-white mx-16"
@@ -14,23 +14,33 @@ export default function Breadcrumb() {
     >
       <ol className="inline-flex items-center ">
         <li className="inline-flex items-center">
-          <a
-            href="#"
+          <Link
+            to="/"
             className="inline-flex items-center text-sm font-medium text-[var(--colorOne)] hover:text-[var(--colorThree)]"
           >
             <BiSolidHomeSmile className="w-5 h-5" />
-          </a>
+          </Link>
         </li>
         <RiArrowDropLeftLine className="mx-2" />
-        <li>
-          <a href="#" className=" text-sm font-medium text-[var(--colorOne)] hover:text-[var(--colorThree)]">
-            محصولات
-          </a>
-        </li>
-        <RiArrowDropLeftLine className="mx-2" />
+        {url !== undefined &&
+          url.map((item, index) => {
+            return (
+              <React.Fragment key={index}>
+                <li>
+                  <Link
+                    to={item.link}
+                    className=" text-sm font-medium text-[var(--colorOne)] hover:text-[var(--colorThree)]"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+                <RiArrowDropLeftLine className="mx-2" />
+              </React.Fragment>
+            );
+          })}
         <li aria-current="page">
           <span className="ml-1 text-sm font-medium text-gray-500 md:ml-2 dark:text-gray-400">
-            فرش ماشینی
+            {thisPage}
           </span>
         </li>
       </ol>
@@ -45,4 +55,5 @@ export default function Breadcrumb() {
     //   <a href="#">Breadcrumbs</a>
     // </Breadcrumbs>
   );
-}
+});
+export default Breadcrumb;

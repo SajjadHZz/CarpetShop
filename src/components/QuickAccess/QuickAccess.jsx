@@ -1,78 +1,87 @@
-import React, { useRef, useState } from "react";
-import ProductsSlider from "../../components/ProductsSlider/ProductsSlider";
-import Footer from "../../components/Footer/Footer";
-import Header from "../../components/Header/Header";
-import Navbar from "../../components/Navbar/Navbar";
-import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
-/////////////////////////////////////////////////////////////////////////////////////////////////////
-import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode, Navigation, Thumbs, Grid, Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/grid";
-import "swiper/css/free-mode";
-import "swiper/css/navigation";
-import "swiper/css/thumbs";
+import React, { useEffect, useRef, useState } from "react";
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
-import { Button, IconButton } from "@material-tailwind/react";
+import { useKeenSlider } from "keen-slider/react";
+import "keen-slider/keen-slider.min.css";
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
-import { AiOutlineHeart, AiOutlineClose } from "react-icons/ai";
+import Zoom from "react-medium-image-zoom";
+import "react-medium-image-zoom/dist/styles.css";
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+import { Button, IconButton, Tooltip } from "@material-tailwind/react";
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 import { LiaRandomSolid } from "react-icons/lia";
 import { PiBasketBold } from "react-icons/pi";
+import { AiOutlineHeart } from "react-icons/ai";
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
-import { useTimer } from "react-timer-hook";
+import { Link } from "react-router-dom";
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 import { machineProducts } from "../../Datas";
 
-function Specifications() {
-  return (
-    <>
-      <div className="flex items-center gap-3  my-1">
-        <p className="p-3 bg-[var(--colorFive)] text-white font-[Shabnam-Medium] text-sm w-1/3 rounded-lg ">
-          رنگ
-        </p>
-        <p className="p-3 bg-[var(--colorFour)] text-black font-[Shabnam-Light] text-sm w-2/3 rounded-lg">
-          نقره ای
-        </p>
-      </div>
-      <div className="flex items-center gap-3 my-1">
-        <p className="p-3 bg-[var(--colorFive)] text-white font-[Shabnam-Medium] text-sm w-1/3 rounded-lg ">
-          نام
-        </p>
-        <p className="p-3 bg-[var(--colorFour)] text-black font-[Shabnam-Light] text-sm w-2/3 rounded-lg">
-          فرش طرح بهشت نقره ای
-        </p>
-      </div>
-      <div className="flex items-center gap-3 my-1">
-        <p className="p-3 bg-[var(--colorFive)] text-white font-[Shabnam-Medium] text-sm w-1/3 rounded-lg ">
-          سبک
-        </p>
-        <p className="p-3 bg-[var(--colorFour)] text-black font-[Shabnam-Light] text-sm w-2/3 rounded-lg">
-          پوست و چرم
-        </p>
-      </div>
-    </>
-  );
+// ---------------------------------------------------------------------------
+function ThumbnailPlugin(mainRef) {
+  return (slider) => {
+    function removeActive() {
+      slider.slides.forEach((slide) => {
+        slide.classList.remove("active");
+      });
+    }
+    function addActive(idx) {
+      slider.slides[idx].classList.add("active");
+    }
+
+    function addClickEvents() {
+      slider.slides.forEach((slide, idx) => {
+        slide.addEventListener("click", () => {
+          if (mainRef.current) mainRef.current.moveToIdx(idx);
+        });
+      });
+    }
+
+    slider.on("created", () => {
+      if (!mainRef.current) return;
+      addActive(slider.track.details.rel);
+      addClickEvents();
+      mainRef.current.on("animationStarted", (main) => {
+        removeActive();
+        const next = main.animator.targetIdx || 0;
+        addActive(main.track.absToRel(next));
+        slider.moveToIdx(Math.min(slider.track.details.maxIdx, next));
+      });
+    });
+  };
 }
 
 ////////////////////////////////////////////// START MAIN FUNCTION //////////////////////////////////////////////
-export default function QuickAccess() {
-  const discountTime = new Date("2024/1/12");
-  const expiryTimestamp = new Date();
-  const differentDays = Math.floor(-(expiryTimestamp.getTime() - discountTime.getTime()) / 1000);
-  expiryTimestamp.setSeconds(expiryTimestamp.getSeconds() + differentDays);
-  const { seconds, minutes, hours, days } = useTimer({
-    expiryTimestamp,
-    onExpire: () => console.warn("onExpire called"),
-  });
+export default function QuickAccess({ productSelectedId }) {
+  const [chosedProduct, setChosedProduct] = useState(machineProducts[productSelectedId]);
+  useEffect(() => {
+    setChosedProduct(machineProducts[productSelectedId]);
+  }, [productSelectedId]);
 
-  const swiper = useRef();
-  // const [thumbsSwiper, setThumbsSwiper] = useState("1");
-  // console.log(swiper);
-  // console.log(thumbsSwiper);
+  const [sliderRef, instanceRef] = useKeenSlider({
+    initial: 0,
+    rtl: true,
+    slides: {
+      perView: 1,
+      spacing: 5,
+    },
+  });
+  const [thumbnailRef] = useKeenSlider(
+    {
+      initial: 0,
+      rtl: true,
+      slides: {
+        perView: 4,
+        spacing: 5,
+      },
+    },
+    [ThumbnailPlugin(instanceRef)]
+  );
 
   const [productCounter, setProductCounter] = useState(1);
   const addCounterProudctHandler = () => {
@@ -84,140 +93,147 @@ export default function QuickAccess() {
     }
   };
 
+  const [selectSize, setSelectSize] = useState(0);
+
   return (
     <>
-      <div className="w-2/3 flex items-stretch gap-5 bg-white font-[Shabnam-Light] relative overflow-hidden">
-        <img src="public/img/Asset-3.png" alt="Elem" className="absolute -left-1/3 opacity-[0.04] " />
-        <div className="w-1/3 relative">
-          <Swiper
-            style={{
-              "--swiper-navigation-color": "#fff",
-              "--swiper-pagination-color": "#fff",
-            }}
-            spaceBetween={10}
-            navigation={true}
-            // thumbs={{ swiper: thumbsSwiper }}
-            modules={[FreeMode, Navigation, Thumbs]}
-            className="mySwiper2"
-          >
-            {machineProducts[0].srcGallery.map((item, index) => {
+      <img src="public/img/Asset-3.png" className="absolute -left-1/3 opacity-[0.04] " />
+      <div className="relative w-full flex flex-col md:flex-row items-stretch gap-2 p-px sm:p-2 overflow-y-auto">
+        {/* ///////////// SLIDER IMAGES ///////////// */}
+        <div className="hidden md:inline-block px-2 md:px-0 w-11/12 md:w-1/3 mx-auto">
+          <div ref={sliderRef} className="flex flex-row-reverse overflow-hidden mb-2">
+            {chosedProduct.srcGallery.map((item, index) => {
               return (
-                <SwiperSlide key={index}>
-                  <img src={item} />
-                </SwiperSlide>
+                <div key={index} className="keen-slider__slide">
+                  <Zoom wrapElement="span">
+                    <img className="w-full h-full object-cover" src={item} />
+                  </Zoom>
+                </div>
               );
             })}
-          </Swiper>
-          <Swiper
-            ref={swiper}
-            // onSwiper={(swiper) => {
-            //   console.log(swiper);
-            //   return setThumbsSwiper();
-            // }}
-            // onSwiper={setThumbsSwiper}
-            spaceBetween={3}
-            slidesPerView={4}
-            freeMode={true}
-            watchSlidesProgress={true}
-            modules={[FreeMode, Navigation, Thumbs]}
-            className="mySwiper"
-          >
-            {machineProducts[0].srcGallery.map((item, index) => {
+          </div>
+
+          <div ref={thumbnailRef} className="flex flex-row-reverse overflow-hidden">
+            {chosedProduct.srcGallery.map((item, index) => {
               return (
-                <SwiperSlide key={index}>
-                  <img src={item} />
-                </SwiperSlide>
+                <div key={index} className="keen-slider__slide">
+                  <img className="w-full h-full object-cover" src={item} />
+                </div>
               );
             })}
-          </Swiper>
-          <p className="absolute top-2 right-2 z-[1] font-[Shabnam-Light] px-2 py-1 text-[var(--colorFive)] bg-pink-50 rounded-xl">
-            تخفیف ویژه
-          </p>
+          </div>
         </div>
-        <div className="py-5 px-3 w-2/3 relative">
-          <h2 className="font-black text-xl">فرش طرح افشان مدل افرا زمینه طوسی</h2>
-          <p className=" after:w-11/12 after:h-[2px] after:bg-gray-300 after:inline-block flex items-center after:flex-1 gap-2 text-sm mt-3 text-gray-600 font-semibold">
-            کد فرش : 12345
+
+        {/* ///////////// DETAILES ///////////// */}
+        <div className="py-5 px-3 w-full md:w-2/3 font-[Shabnam-Light]">
+          <h2 className="font-black text-base md:text-xl">{chosedProduct.title}</h2>
+          <p className="text-xs md:text-sm after:w-11/12 after:h-[2px] after:bg-gray-300 after:inline-block flex items-center after:flex-1 gap-2 mt-3 text-gray-600 font-semibold">
+            کد فرش : {chosedProduct.code.toLocaleString("fa-ir", { useGrouping: false })}
           </p>
 
-          <div className="font-bold flex items-center mt-2">
+          {/* ----- CATEGORY ----- */}
+          <div className="text-sm md:text-base font-bold flex items-center mt-2">
             <p className="pl-2 border-l border-solid border-gray-400">
-              <span className="">دسته بندی</span> {" : "}
-              <span className="text-[var(--colorFive)]">فرش ماشینی</span>
+              <span>دسته بندی</span> {" : "}
+              <span className="text-[var(--colorFive)]">فرش {chosedProduct.pattern}</span>
             </p>
             <p className="pr-2">
-              <span className="">برند</span> <span className="text-[var(--colorFive)]">پامچال</span>
+              <span>برند</span> <span className="text-[var(--colorFive)]">{chosedProduct.brand}</span>
             </p>
           </div>
 
-          <h5 className="font-bold mt-4">مهمترین ویژگی های محصول :</h5>
-          <ul className="">
-            <li className="text-sm font-semibold before:w-1 before:h-1 before:bg-[var(--colorTow)] before:inline-block before:rounded-full before:ml-2 mt-2">
-              <span className="">جنس نخ</span>
-              {" : "}
-              <span className="text-[var(--colorFive)]">پلی اتیلن</span>
-            </li>
-            <li className="text-sm font-semibold before:w-1 before:h-1 before:bg-[var(--colorTow)] before:inline-block before:rounded-full before:ml-2 mt-2">
-              <span className="">جنس نخ</span>
-              {" : "}
-              <span className="text-[var(--colorFive)]">پلی اتیلن</span>
-            </li>
-            <li className="text-sm font-semibold before:w-1 before:h-1 before:bg-[var(--colorTow)] before:inline-block before:rounded-full before:ml-2 mt-2">
-              <span className="">جنس نخ</span>
-              {" : "}
-              <span className="text-[var(--colorFive)]">پلی اتیلن</span>
-            </li>
-            <li className="text-sm font-semibold before:w-1 before:h-1 before:bg-[var(--colorTow)] before:inline-block before:rounded-full before:ml-2 mt-2">
-              <span className="">جنس نخ</span>
-              {" : "}
-              <span className="text-[var(--colorFive)]">پلی اتیلن</span>
-            </li>
-            <li className="text-sm font-semibold before:w-1 before:h-1 before:bg-[var(--colorTow)] before:inline-block before:rounded-full before:ml-2 mt-2">
-              <span className="">جنس نخ</span>
-              {" : "}
-              <span className="text-[var(--colorFive)]">پلی اتیلن</span>
-            </li>
+          {/* ----- ATTRIBUTES ----- */}
+          <h5 className="text-sm md:text-base font-bold mt-4">مهمترین ویژگی های محصول :</h5>
+          <ul>
+            {chosedProduct.attributes.map((item, index) => {
+              return (
+                <li
+                  key={index}
+                  className="text-xs md:text-sm font-semibold before:w-1 before:h-1 before:bg-[var(--colorTow)] before:inline-block before:rounded-full before:ml-2 mt-2"
+                >
+                  <span>{item.name}</span>
+                  {" : "}
+                  <span className="text-[var(--colorFive)]">{item.value}</span>
+                </li>
+              );
+            })}
           </ul>
 
-          <div className="flex items-center gap-2 my-3">
+          {/* ----- CHOSE SIZE ----- */}
+          <div className="text-xs md:text-sm flex items-center gap-2 my-3">
             <p className=" ml-2 font-bold">انتخاب سایز :</p>
-            <div className="bg-[var(--colorFour)] px-2 py-1 cursor-pointer rounded-full text-xs">3 متر</div>
-            <div className="bg-[var(--colorFour)] px-2 py-1 cursor-pointer rounded-full text-xs">6 متر</div>
-            <div className="bg-[var(--colorFour)] px-2 py-1 cursor-pointer rounded-full text-xs">9 متر</div>
+            {chosedProduct.dimensions
+              .map((item, index) => {
+                return (
+                  <div key={index} className="relative flex items-center justify-center">
+                    <label className="text-xs  absolute cursor-pointer" htmlFor={`checkboxSize${index}`}>
+                      {item.metter.toLocaleString("fa-ir")} متر
+                    </label>
+                    <input
+                      onClick={() => setSelectSize(index)}
+                      defaultChecked
+                      id={`checkboxSize${index}`}
+                      type="radio"
+                      name="carpetSize"
+                      className="appearance-none transition-all w-12 h-6 text-black checked:ring-[var(--colorFive)] checked:ring-2 bg-[var(--colorFour)] px-2 py-1 cursor-pointer rounded-full text-xs"
+                    />
+                  </div>
+                );
+              })
+              .reverse()}
           </div>
 
-          <div className="flex items-center gap-2 my-3">
+          {/* ----- BUTTONS ----- */}
+          <div className="text-sm md:text-base flex items-center gap-1 sm:gap-2 my-3 w-full">
             <div className="ml-3 w-[5rem] relative text-center rounded-full border-[1px] border-solid p-1">
               <button
                 onClick={minusCounterProductHandler}
-                className="absolute -right-2 top-1/2 -translate-y-1/2 bg-[var(--colorTow)] w-5 h-5  text-white rounded-full"
+                className="transition-all hover:scale-110 hover:bg-[var(--colorThree)] absolute -right-2 top-1/2 -translate-y-1/2 bg-[var(--colorTow)] w-5 h-5  text-white rounded-full"
               >
                 -
               </button>
               <p className="select-none">{productCounter.toLocaleString("fa-ir")}</p>
               <button
                 onClick={addCounterProudctHandler}
-                className="absolute -left-2 top-1/2 -translate-y-1/2 bg-[var(--colorTow)] w-5 h-5  text-white rounded-full"
+                className="transition-all hover:scale-110 hover:bg-[var(--colorThree)] absolute -left-2 top-1/2 -translate-y-1/2 bg-[var(--colorTow)] w-5 h-5  text-white rounded-full"
               >
                 +
               </button>
             </div>
-            <IconButton className="bg-[var(--colorTow)] text-lg">
-              <PiBasketBold className="" />
-            </IconButton>
-            <IconButton className="bg-[var(--colorTow)] text-lg">
-              <AiOutlineHeart className="" />
-            </IconButton>
-            <IconButton className="bg-[var(--colorTow)] text-lg">
-              <LiaRandomSolid className="" />
-            </IconButton>
-            <div className=""></div>
+            <Tooltip className="font-[Shabnam-Light]" content="چشممو گرفت">
+              <IconButton className="transition-all hover:scale-110 hover:bg-[var(--colorThree)] bg-[var(--colorTow)] w-8 h-8 sm:w-12 sm:h-12 text-lg">
+                <PiBasketBold />
+              </IconButton>
+            </Tooltip>
+            <Tooltip className="font-[Shabnam-Light]" content="چشممو گرفت">
+              <IconButton className="transition-all hover:scale-110 hover:bg-[var(--colorThree)] bg-[var(--colorTow)] w-8 h-8 sm:w-12 sm:h-12 text-lg">
+                <AiOutlineHeart />
+              </IconButton>
+            </Tooltip>
+            <Tooltip className="font-[Shabnam-Light]" content="مقایسه">
+              <Link to="/compare">
+                <IconButton className="hidden lg:inline-block transition-all hover:scale-110 hover:bg-[var(--colorThree)] bg-[var(--colorTow)] w-8 h-8 sm:w-12 sm:h-12 text-lg">
+                  <LiaRandomSolid />
+                </IconButton>
+              </Link>
+            </Tooltip>
+            {/* <Button className="">مشاهده محصول</Button> */}
+            <div className="flex-1 text-end ">
+              <p className="inline-block text-black font-bold min-w-[110px] ">
+                {chosedProduct.discount
+                  ? (
+                      Math.floor(
+                        (chosedProduct.dimensions[selectSize].price *
+                          (1 - chosedProduct.discount.percent / 100)) /
+                          1000
+                      ) * 1000
+                    ).toLocaleString("fa-ir")
+                  : chosedProduct.dimensions[selectSize].price.toLocaleString("fa-ir")}{" "}
+                تومان
+              </p>
+            </div>
           </div>
-          <Button fullWidth className="bg-[var(--colorFive)] font-[Shabnam-Light] text-base">
-            مشاهده محصول
-          </Button>
         </div>
-        <AiOutlineClose className="absolute top-2 left-2 text-2xl text-[var(--colorTow)] w-8 h-8 p-2 bg-[var(--colorFour)] rounded-full transition hover:bg-[var(--colorFive)] hover:text-white cursor-pointer" />
       </div>
     </>
   );

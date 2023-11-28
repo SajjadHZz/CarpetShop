@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 import { RiUserSmileLine } from "react-icons/ri";
 import { LiaGrinHeartsSolid } from "react-icons/lia";
 import { TbBoxSeam } from "react-icons/tb";
@@ -10,11 +10,8 @@ import { Menu, MenuHandler, MenuList, MenuItem, Button } from "@material-tailwin
 
 import { Link } from "react-router-dom";
 
-export default function Account() {
+const Account = memo(() => {
   const [isUserLogin, setIsUserLogin] = useState(true);
-  const showModalHandler = () => {
-    setShowModal(!showModal);
-  };
 
   return (
     <div className="relative">
@@ -23,9 +20,9 @@ export default function Account() {
           <Menu>
             <MenuHandler>
               <Button className="p-0 bg-transparent shadow-none text-black hover:shadow-none flex justify-between items-center gap-1 md:gap-3 cursor-pointer select-none">
-                <img src="public/img/Profiles/Profile1.png" alt="Profile" className="w-8 h-8 rounded-full" />
+                <img src="images/undefiend.png" alt="Profile" className="w-8 h-8 rounded-full" />
                 <p className="hidden md:inline-block font-[Shabnam-Medium] text-xs md:text-sm">
-                  قاسم هاشمی مسگر
+                  سجاد حسین زاده
                 </p>
                 <MdOutlineKeyboardArrowDown className="w-3 h-3" />
               </Button>
@@ -80,7 +77,7 @@ export default function Account() {
             </Link>
             /
             <Link
-              to="/login"
+              to="/sign"
               className="mx-2 text-[var(--colorTow)] transition-colors hover:text-[var(--colorFive)]"
             >
               ثبت نام
@@ -90,4 +87,5 @@ export default function Account() {
       )}
     </div>
   );
-}
+});
+export default Account;

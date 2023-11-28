@@ -27,7 +27,7 @@ export default function ShippingLocation() {
                   accomplished ? "accomplished" : null
                 } bg-[var(--colorFour)] rounded-full overflow-visible w-fit`}
               >
-                <img src="public/img/Icons/basket.png" alt="Logo" className="w-16 h-16 mb-2" />
+                <img src="images/Icons/basket.png" alt="Logo" className="w-16 h-16 mb-2" />
                 <p className="">سبد خرید</p>
               </div>
             )}
@@ -39,7 +39,7 @@ export default function ShippingLocation() {
                   accomplished ? "accomplished" : null
                 } bg-[var(--colorFour)] rounded-full overflow-visible`}
               >
-                <img src="public/img/Icons/tracking.png" alt="Logo" className="w-16 h-16 mb-2" />
+                <img src="images/Icons/tracking.png" alt="Logo" className="w-16 h-16 mb-2" />
                 <p className="">آدرس شما</p>
               </div>
             )}
@@ -51,7 +51,7 @@ export default function ShippingLocation() {
                   accomplished ? "accomplished" : null
                 } bg-[var(--colorFour)] rounded-full overflow-visible`}
               >
-                <img src="public/img/Icons/give-money.png" alt="Logo" className="w-16 h-16 mb-2" />
+                <img src="images/Icons/give-money.png" alt="Logo" className="w-16 h-16 mb-2" />
                 <p className="">پرداخت مبلغ</p>
               </div>
             )}

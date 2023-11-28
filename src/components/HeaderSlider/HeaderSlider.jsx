@@ -5,19 +5,14 @@ import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 
 ///////////////////////////////////////////////////////////////////
 const imageDatas = [
-  "public/img/Header-Slider/sld1.jpg",
-  "public/img/Header-Slider/sld2.jpg",
-  "public/img/Header-Slider/sld3.jpg",
-  "public/img/Header-Slider/sld4.jpg",
-  "public/img/Header-Slider/sld5.jpg",
-  "public/img/Header-Slider/sld6.jpg",
-  "public/img/Header-Slider/sld7.jpg",
-  "public/img/Header-Slider/sld8.jpg",
-  "public/img/Header-Slider/sld9.jpg",
-  "public/img/Header-Slider/sld10.jpg",
-  "public/img/Header-Slider/sld11.jpg",
-  "public/img/Header-Slider/sld12.jpg",
+  { id: 1, sm: "images/Header-Slider/sm-sld1.jpg", xl: "images/Header-Slider/sld1.jpg" },
+  { id: 2, sm: "images/Header-Slider/sm-sld2.jpg", xl: "images/Header-Slider/sld2.jpg" },
+  { id: 3, sm: "images/Header-Slider/sm-sld3.jpg", xl: "images/Header-Slider/sld3.jpg" },
+  { id: 4, sm: "images/Header-Slider/sm-sld4.jpg", xl: "images/Header-Slider/sld4.jpg" },
+  { id: 5, sm: "images/Header-Slider/sm-sld5.jpg", xl: "images/Header-Slider/sld5.jpg" },
 ];
+const windowInner = window.innerWidth;
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -39,8 +34,12 @@ export default function HeaderSlider() {
         modules={[Autoplay]}
       >
         {imageDatas.map((item) => (
-          <SwiperSlide key={item}>
-            <img src={item} alt="Image Slider" className="w-full h-20 md:h-80 object-cover" />
+          <SwiperSlide key={item.id}>
+            <img
+              src={windowInner > 500 ? item.xl : item.sm}
+              alt="Image Slider"
+              className="w-full h-32 sm:h-40 lg:h-60 xl:h-80 object-cover"
+            />
           </SwiperSlide>
         ))}
       </Swiper>
@@ -48,7 +47,7 @@ export default function HeaderSlider() {
         <div>
           {imageDatas.map((item, index) => (
             <span
-              key={item}
+              key={item.id}
               onClick={() => {
                 setSlideActive(index);
                 swiper.current.swiper.slideToLoop(index);

@@ -60,7 +60,7 @@ export default function CategoryBlog() {
             <div className="border-b border-solid border-gray-400">
               <Link to="/detailsblog">
                 <img
-                  src="public/img/Carpets/Show-Carpets/03.jpg"
+                  src="images/Carpets/Show-Carpets/03.jpg"
                   alt="Image"
                   className="w-full object-cover rounded-xl"
                 />
@@ -79,7 +79,7 @@ export default function CategoryBlog() {
             <div className="border-b border-solid border-gray-400">
               <Link to="/detailsblog">
                 <img
-                  src="public/img/Carpets/Show-Carpets/03.jpg"
+                  src="images/Carpets/Show-Carpets/03.jpg"
                   alt=""
                   className="w-full object-cover rounded-xl"
                 />
@@ -98,7 +98,7 @@ export default function CategoryBlog() {
             <div className="border-b border-solid border-gray-400">
               <Link to="/detailsblog">
                 <img
-                  src="public/img/Carpets/Show-Carpets/03.jpg"
+                  src="images/Carpets/Show-Carpets/03.jpg"
                   alt=""
                   className="w-full object-cover rounded-xl"
                 />
@@ -151,7 +151,7 @@ export default function CategoryBlog() {
             <div className="font-[Shabnam-Medium]">
               <Link to="/detailsblog" className="flex gap-2 my-3">
                 <img
-                  src="public/img/Carpets/Show-Carpets/05.jpg"
+                  src="images/Carpets/Show-Carpets/05.jpg"
                   alt="Image"
                   className="w-24 h-16 object-cover rounded-xl"
                 />
@@ -164,7 +164,7 @@ export default function CategoryBlog() {
               </Link>
               <Link to="/detailsblog" className="flex gap-2 my-3">
                 <img
-                  src="public/img/Carpets/Show-Carpets/05.jpg"
+                  src="images/Carpets/Show-Carpets/05.jpg"
                   alt="Image"
                   className="w-24 h-16 object-cover rounded-xl"
                 />
@@ -177,7 +177,7 @@ export default function CategoryBlog() {
               </Link>
               <Link to="/detailsblog" className="flex gap-2 my-3">
                 <img
-                  src="public/img/Carpets/Show-Carpets/05.jpg"
+                  src="images/Carpets/Show-Carpets/05.jpg"
                   alt="Image"
                   className="w-24 h-16 object-cover rounded-xl"
                 />

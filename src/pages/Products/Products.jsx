@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Products.css";
 
-import { machineProducts } from "../../Datas";
+import { machineProducts, productsCategory } from "../../Datas";
 
 //////////////////////////////////////////////////////////////////////////////////////
 import Header from "../../components/Header/Header";
@@ -37,6 +37,7 @@ import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import { BsArrowRightSquareFill, BsArrowLeftSquareFill, BsFilterRight } from "react-icons/bs";
 import { FaFilter } from "react-icons/fa6";
 import { TiTick } from "react-icons/ti";
+import { useEffect } from "react";
 
 const filterProductLabel = [
   { label: "پربازدید ترین", value: "visit" },
@@ -45,28 +46,40 @@ const filterProductLabel = [
   { label: "گران ترین", value: "expensive" },
   { label: "جدید ترین", value: "news" },
 ];
+
 ///////////////////////////////////////// * START FUNCTION * /////////////////////////////////////////////
 export default function Category() {
+  const [pageURL, setPageURL] = useState([]);
+  useEffect(() => {
+    setPageURL([]);
+  }, []);
+
   const [filterProducts, setFilterProducts] = useState();
 
-  const [active, setActive] = useState(1);
+  const pageShowProducts = 3;
+  const pageCount = Math.ceil(machineProducts.length / pageShowProducts);
+  const pageShowNumber = Array.from(Array(pageCount).keys());
+  const [activePagination, setActivePagination] = useState(1);
+  const pageShowProductsArrey = machineProducts.slice(
+    activePagination * pageShowProducts - pageShowProducts,
+    activePagination * pageShowProducts
+  );
+  console.log(pageShowProductsArrey);
 
   const getItemProps = (index) => ({
-    variant: active === index ? "filled" : "text",
-    color: "red",
-    onClick: () => setActive(index),
+    variant: activePagination === index ? "filled" : "text",
+    color: "blue",
+    onClick: () => setActivePagination(index),
   });
 
   const next = () => {
-    if (active === 5) return;
-
-    setActive(active + 1);
+    if (activePagination === pageCount) return;
+    setActivePagination(activePagination + 1);
   };
 
   const prev = () => {
-    if (active === 1) return;
-
-    setActive(active - 1);
+    if (activePagination === 1) return;
+    setActivePagination(activePagination - 1);
   };
 
   const [open, setOpen] = useState(0);
@@ -90,9 +103,9 @@ export default function Category() {
   return (
     <>
       <Header />
-      <Breadcrumb />
+      <Breadcrumb url={pageURL} thisPage="محصولات" />
 
-      <div className="flex justify-between gap-4 my-5 mx-2 lg:mx-16">
+      <div className="flex justify-between gap-4 my-5 mx-2 xl:mx-16">
         {/* -------------------------- FILTERS -------------------------- */}
         <div className="hidden lg:inline-block bg-white px-3 py-2 rounded-lg overflow-hidden w-1/4 h-fit">
           {/* ///////////////// PRODUCTS CATEGORY //////////////// */}
@@ -101,78 +114,38 @@ export default function Category() {
               دسته بندی
             </h4>
             <div className="pr-2">
-              <Accordion open={open === 1} icon={open === 1 ? <AiOutlineMinus /> : <AiOutlinePlus />}>
-                <AccordionHeader
-                  className="font-[Shabnam-Light] border-none text-md p-2"
-                  onClick={() => handleOpen(1)}
-                >
-                  فرش ماشینی
-                </AccordionHeader>
-                <AccordionBody className="p-0">
-                  <List className="py-0 px-2 w-11/12">
-                    <Link to="/products">
-                      <ListItem className="p-0">
-                        <Typography className=" w-full py-2 cursor-pointer text-sm text-blue-gray-400 font-[Shabnam-Light] mr-2">
-                          فرش سنتی
-                        </Typography>
-                        <p className="text-gray-400 ml-2 text-sm">(12)</p>
-                      </ListItem>
-                    </Link>
-                    <Link to="/products">
-                      <ListItem className="p-0">
-                        <Typography className=" w-full py-2 cursor-pointer text-sm text-blue-gray-400 font-[Shabnam-Light] mr-2">
-                          فرش سنتی
-                        </Typography>
-                        <p className="text-gray-400 ml-2 text-sm">(12)</p>
-                      </ListItem>
-                    </Link>
-                    <Link to="/products">
-                      <ListItem className="p-0">
-                        <Typography className=" w-full py-2 cursor-pointer text-sm text-blue-gray-400 font-[Shabnam-Light] mr-2">
-                          فرش سنتی
-                        </Typography>
-                        <p className="text-gray-400 ml-2 text-sm">(12)</p>
-                      </ListItem>
-                    </Link>
-                  </List>
-                </AccordionBody>
-              </Accordion>
-              <Accordion open={open === 2} icon={open === 2 ? <AiOutlineMinus /> : <AiOutlinePlus />}>
-                <AccordionHeader
-                  className="font-[Shabnam-Light] border-none text-md p-2"
-                  onClick={() => handleOpen(2)}
-                >
-                  فرش ماشینی
-                </AccordionHeader>
-                <AccordionBody className="p-0">
-                  <List className="py-0 px-2 w-11/12">
-                    <Link to="/products">
-                      <ListItem className="p-0">
-                        <Typography className=" w-full py-2 cursor-pointer text-sm text-blue-gray-400 font-[Shabnam-Light] mr-2">
-                          فرش سنتی
-                        </Typography>
-                        <p className="text-gray-400 ml-2 text-sm">(12)</p>
-                      </ListItem>
-                    </Link>
-                    <Link to="/products">
-                      <ListItem className="p-0">
-                        <Typography className=" w-full py-2 cursor-pointer text-sm text-blue-gray-400 font-[Shabnam-Light] mr-2">
-                          فرش سنتی
-                        </Typography>
-                        <p className="text-gray-400 ml-2 text-sm">(12)</p>
-                      </ListItem>
-                    </Link>
-                    <Link to="/products">
-                      <ListItem className="p-0">
-                        <Typography className=" w-full py-2 cursor-pointer text-sm text-blue-gray-400 font-[Shabnam-Light] mr-2">
-                          فرش سنتی
-                        </Typography>
-                        <p className="text-gray-400 ml-2 text-sm">(12)</p>
-                      </ListItem>
-                    </Link>
-                  </List>
-                </AccordionBody>
-              </Accordion>
+              {productsCategory.map((item) => {
+                return (
+                  <Accordion
+                    key={item.id}
+                    open={open === item.id}
+                    icon={open === item.id ? <AiOutlineMinus /> : <AiOutlinePlus />}
+                  >
+                    <AccordionHeader
+                      className="font-[Shabnam-Light] border-none text-md p-2"
+                      onClick={() => handleOpen(item.id)}
+                    >
+                      {item.title}
+                    </AccordionHeader>
+                    <AccordionBody className="p-0">
+                      <List className="py-0 px-2 w-11/12">
+                        {item.subCategory.map((category, index) => {
+                          return (
+                            <Link key={index} to="/products">
+                              <ListItem className="p-0">
+                                <Typography className=" w-full py-2 cursor-pointer text-sm text-blue-gray-400 font-[Shabnam-Light] mr-2">
+                                  {category.lable}
+                                </Typography>
+                                <p className="text-gray-400 ml-2 text-sm">(1)</p>
+                              </ListItem>
+                            </Link>
+                          );
+                        })}
+                      </List>
+                    </AccordionBody>
+                  </Accordion>
+                );
+              })}
             </div>
           </div>
 
@@ -237,7 +210,7 @@ export default function Category() {
 
         {/* -------------------------- PRODUCTS -------------------------- */}
         <div className="lg:w-3/4 flex flex-col gap-3">
-          <Card className="w-fit mx-auto">
+          <Card className="w-full mx-auto">
             <List className="hidden lg:flex flex-row h-14 gap-5">
               <h4 className="text-lg text-[var(--colorTow)] font-[Shabnam-Bold]  p-2">فیلتر بر اساس :</h4>
               {filterProductLabel.map((item, index) => {
@@ -301,9 +274,9 @@ export default function Category() {
             </div>
 
             <List>
-              {filterProductLabel.map((item) => {
+              {filterProductLabel.map((item, index) => {
                 return (
-                  <ListItem className="font-[Shabnam-Light]">
+                  <ListItem key={index} className="font-[Shabnam-Light]">
                     {item.label}
                     <ListItemSuffix className="ml-0 mr-auto">
                       <TiTick />
@@ -399,32 +372,36 @@ export default function Category() {
           </Drawer>
 
           <div className="flex justify-center flex-wrap lg:flex-row lg:justify-between gap-2">
-            {machineProducts.map((item) => {
+            {pageShowProductsArrey.map((item) => {
               return <ProductBox key={item.id} {...item} />;
             })}
           </div>
+
+          {/* --------------- PRODUCTS PAGINATION --------------- */}
 
           <div className="flex items-center gap-4 self-center mt-5">
             <IconButton
               variant="text"
               className="text-[var(--colorFour)] bg-[var(--colorTow)]"
               onClick={prev}
-              disabled={active === 1}
+              disabled={activePagination === 1}
             >
               <BsArrowRightSquareFill className="w-10 h-10" />
             </IconButton>
             <div className="flex items-center gap-2">
-              <IconButton {...getItemProps(1)}>1</IconButton>
-              <IconButton {...getItemProps(2)}>2</IconButton>
-              <IconButton {...getItemProps(3)}>3</IconButton>
-              <IconButton {...getItemProps(4)}>4</IconButton>
-              <IconButton {...getItemProps(5)}>5</IconButton>
+              {pageShowNumber.map((item) => {
+                return (
+                  <IconButton key={item} {...getItemProps(item + 1)}>
+                    {item + 1}
+                  </IconButton>
+                );
+              })}
             </div>
             <IconButton
               variant="text"
               className=" text-[var(--colorFour)] bg-[var(--colorTow)]"
               onClick={next}
-              disabled={active === 5}
+              disabled={activePagination === 5}
             >
               <BsArrowLeftSquareFill className="w-10 h-10" />
             </IconButton>

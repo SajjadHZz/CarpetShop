@@ -18,7 +18,7 @@ export default function Blog() {
           className="group relative row-span-1 col-span-2 lg:row-span-2 lg:col-span-2 rounded-3xl overflow-hidden after:w-full after:h-full after:bg-gradient-to-t after:from-black after:to-transparent after:inline-block after:absolute after:bottom-0 after:opacity-80"
         >
           <img
-            src="public/img/Carpets/Show-Carpets/01.jpg"
+            src="images/Carpets/Show-Carpets/01.jpg"
             alt=""
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
           />
@@ -34,7 +34,7 @@ export default function Blog() {
           className="group relative row-span-1 col-span-2 lg:row-span-1 lg:col-span-2 rounded-3xl overflow-hidden after:w-full after:h-full after:bg-gradient-to-t after:from-black after:to-transparent after:inline-block after:absolute after:bottom-0 after:opacity-80"
         >
           <img
-            src="public/img/Carpets/Show-Carpets/01.jpg"
+            src="images/Carpets/Show-Carpets/01.jpg"
             alt=""
             className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500"
           />
@@ -50,7 +50,7 @@ export default function Blog() {
           className="group relative row-span-1 col-span-1 rounded-3xl overflow-hidden after:w-full after:h-full after:bg-gradient-to-t after:from-black after:to-transparent after:inline-block after:absolute after:bottom-0 after:opacity-80"
         >
           <img
-            src="public/img/Carpets/Show-Carpets/01.jpg"
+            src="images/Carpets/Show-Carpets/01.jpg"
             alt=""
             className="w-full object-cover group-hover:scale-110 transition-transform duration-500"
           />
@@ -68,7 +68,7 @@ export default function Blog() {
           className="group relative row-span-1 col-span-1 rounded-3xl overflow-hidden after:w-full after:h-full after:bg-gradient-to-t after:from-black after:to-transparent after:inline-block after:absolute after:bottom-0 after:opacity-80"
         >
           <img
-            src="public/img/Carpets/Show-Carpets/01.jpg"
+            src="images/Carpets/Show-Carpets/01.jpg"
             alt=""
             className="w-full object-cover group-hover:scale-110 transition-transform duration-500"
           />
@@ -86,18 +86,18 @@ export default function Blog() {
       {/* -------------------------------------------------------------------------------------------------------- */}
 
       <div className="relative px-2 sm:px-10 lg:px-16 py-4 md:flex justify-between gap-4 font-[Shabnam-Medium]">
-        <img src="public/img/Asset-2.png" alt="" className="absolute -top-32 -right-80 -z-10" />
+        <img src="images/Asset-2.png" alt="" className="absolute -top-32 -right-80 -z-10" />
         {/* //////////////////////CARDS///////////////////// */}
         <div className="w-full lg:w-4/6">
           <div className="after:mt-2 after:block after:w-full after:h-1 after:bg-[var(--colorFive)]">
-            <img src="public/img/Icons/relax.png" alt="Image" className="w-7 inline-block ml-2" />
+            <img src="images/Icons/relax.png" alt="Image" className="w-7 inline-block ml-2" />
             <h3 className="text-lg inline-block ">دکوراسیون منزل</h3>
           </div>
           {/* --------------- top ------------- */}
           <div className="border my-3 bg-white overflow-hidden rounded-xl">
             <Link to="/detailsblog">
               <img
-                src="public/img/Carpets/Show-Carpets/01.jpg"
+                src="images/Carpets/Show-Carpets/01.jpg"
                 alt="Card Image"
                 className="w-full object-cover rounded-xl"
               />
@@ -121,7 +121,7 @@ export default function Blog() {
           <div className="grid sm:grid-cols-2 gap-3 mb-2">
             <div className="border-b border-solid border-gray-400">
               <Link to="/detailsblog">
-                <img src="public/img/Carpets/Show-Carpets/02.jpg" alt="" className="rounded-xl w-full" />
+                <img src="images/Carpets/Show-Carpets/02.jpg" alt="" className="rounded-xl w-full" />
               </Link>
               <Link to="/detailsblog">
                 <h4 className="mt-2 transition-colors duration-500 hover:text-[var(--colorFive)]">
@@ -136,7 +136,7 @@ export default function Blog() {
             </div>
             <div className="border-b border-solid border-gray-400">
               <Link to="/detailsblog">
-                <img src="public/img/Carpets/Show-Carpets/02.jpg" alt="" className="rounded-xl w-full" />
+                <img src="images/Carpets/Show-Carpets/02.jpg" alt="" className="rounded-xl w-full" />
               </Link>
               <Link to="/detailsblog">
                 <h4 className="mt-2 transition-colors duration-500 hover:text-[var(--colorFive)]">
@@ -155,14 +155,14 @@ export default function Blog() {
         <div className="w-full lg:w-1/4 ">
           <div className="border p-3 bg-white">
             <div className="mb-2 after:mt-2 after:block after:w-full after:h-1 after:bg-[var(--colorFive)]">
-              <img src="public/img/Icons/rug.png" alt="" className="w-6 inline-block ml-2" />
+              <img src="images/Icons/rug.png" alt="" className="w-6 inline-block ml-2" />
 
               <h3 className="inline-block">فرش و دکوراسیون</h3>
             </div>
             <div className="divide-y divide-solid divide-gray-400">
               <div className="py-3">
                 <Link to="/detailsblog">
-                  <img src="public/img/Carpets/Show-Carpets/04.png" alt="" className="rounded-xl w-full" />
+                  <img src="images/Carpets/Show-Carpets/04.png" alt="" className="rounded-xl w-full" />
                 </Link>
                 <Link to="/detailsblog">
                   <h4 className="text-lg my-2 transition-colors duration-300 hover:text-[var(--colorFive)]">
@@ -178,7 +178,7 @@ export default function Blog() {
               <div className="py-2">
                 <Link to="/detailsblog" className="flex gap-2 my-3">
                   <img
-                    src="public/img/Carpets/Show-Carpets/05.jpg"
+                    src="images/Carpets/Show-Carpets/05.jpg"
                     alt="Image"
                     className="w-24 h-16 object-cover rounded-xl"
                   />
@@ -191,7 +191,7 @@ export default function Blog() {
                 </Link>
                 <Link to="/detailsblog" className="flex gap-2 my-3">
                   <img
-                    src="public/img/Carpets/Show-Carpets/05.jpg"
+                    src="images/Carpets/Show-Carpets/05.jpg"
                     alt="Image"
                     className="w-24 h-16 object-cover rounded-xl"
                   />
@@ -204,7 +204,7 @@ export default function Blog() {
                 </Link>
                 <Link to="/detailsblog" className="flex gap-2 my-3">
                   <img
-                    src="public/img/Carpets/Show-Carpets/05.jpg"
+                    src="images/Carpets/Show-Carpets/05.jpg"
                     alt="Image"
                     className="w-24 h-16 object-cover rounded-xl"
                   />
@@ -220,13 +220,13 @@ export default function Blog() {
           </div>
           <div className="border p-3 bg-white mt-2">
             <h3 className="mb-2 after:mt-2 after:block after:w-full after:h-1 after:bg-[var(--colorFive)]">
-              <img src="public/img/Icons/lightbulb.png" alt="Icon" className="inline-block ml-1 w-7" />
+              <img src="images/Icons/lightbulb.png" alt="Icon" className="inline-block ml-1 w-7" />
               <span>ایده های جدید</span>
             </h3>
             <div>
               <Link to="/detailsblog" className="flex gap-2 my-3">
                 <img
-                  src="public/img/Carpets/Show-Carpets/05.jpg"
+                  src="images/Carpets/Show-Carpets/05.jpg"
                   alt="Image"
                   className="w-24 h-16 object-cover rounded-xl"
                 />
@@ -239,7 +239,7 @@ export default function Blog() {
               </Link>
               <Link to="/detailsblog" className="flex gap-2 my-3">
                 <img
-                  src="public/img/Carpets/Show-Carpets/05.jpg"
+                  src="images/Carpets/Show-Carpets/05.jpg"
                   alt="Image"
                   className="w-24 h-16 object-cover rounded-xl"
                 />
@@ -252,7 +252,7 @@ export default function Blog() {
               </Link>
               <Link to="/detailsblog" className="flex gap-2 my-3">
                 <img
-                  src="public/img/Carpets/Show-Carpets/05.jpg"
+                  src="images/Carpets/Show-Carpets/05.jpg"
                   alt="Image"
                   className="w-24 h-16 object-cover rounded-xl"
                 />
@@ -273,7 +273,7 @@ export default function Blog() {
       {/* ////////////////////////////// HANDMADE ////////////////////////////// */}
       <div className="overflow-hidden bg-[var(--colorTow)] relative text-white text-center font-[Shabnam-Medium]">
         <img
-          src="public/img/Asset.png"
+          src="images/Asset.png"
           className="absolute -top-32 sm:-top-1/3 left-1/2 -translate-x-1/2 lg:translate-x-0 lg:-left-1/4 lg:top-1/2 lg:-translate-y-1/2 lg:h-full opacity-70"
         />
         <Link to="/blogs">
@@ -286,7 +286,7 @@ export default function Blog() {
             className="inline-block relative group rounded-xl overflow-hidden h-96 after:w-full after:h-full after:bg-gradient-to-t after:from-black after:to-transparent after:inline-block after:absolute after:bottom-0 after:right-0 after:opacity-40"
           >
             <img
-              src="public/img/Carpets/Show-Carpets/06.jpg"
+              src="images/Carpets/Show-Carpets/06.jpg"
               alt="Image"
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             />
@@ -302,7 +302,7 @@ export default function Blog() {
             className="inline-block relative group rounded-xl overflow-hidden h-96 after:w-full after:h-full after:bg-gradient-to-t after:from-black after:to-transparent after:inline-block after:absolute after:bottom-0 after:right-0 after:opacity-40"
           >
             <img
-              src="public/img/Carpets/Show-Carpets/06.jpg"
+              src="images/Carpets/Show-Carpets/06.jpg"
               alt="Image"
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             />
@@ -318,7 +318,7 @@ export default function Blog() {
             className="inline-block relative group rounded-xl overflow-hidden h-96 after:w-full after:h-full after:bg-gradient-to-t after:from-black after:to-transparent after:inline-block after:absolute after:bottom-0 after:right-0 after:opacity-40"
           >
             <img
-              src="public/img/Carpets/Show-Carpets/06.jpg"
+              src="images/Carpets/Show-Carpets/06.jpg"
               alt="Image"
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             />
@@ -334,7 +334,7 @@ export default function Blog() {
             className="inline-block relative group rounded-xl overflow-hidden h-96 after:w-full after:h-full after:bg-gradient-to-t after:from-black after:to-transparent after:inline-block after:absolute after:bottom-0 after:right-0 after:opacity-40"
           >
             <img
-              src="public/img/Carpets/Show-Carpets/06.jpg"
+              src="images/Carpets/Show-Carpets/06.jpg"
               alt="Image"
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             />
@@ -356,14 +356,14 @@ export default function Blog() {
           to="/blogs"
           className="after:mt-2 after:block after:w-full after:h-1 after:bg-[var(--colorFive)]"
         >
-          <img src="public/img/Icons/mat.png" alt="Icon" className="w-6 inline-block ml-2" />
+          <img src="images/Icons/mat.png" alt="Icon" className="w-6 inline-block ml-2" />
           <h3 className="inline-block text-xl">موکت</h3>
         </Link>
         <div className="mt-5 gap-4 grid md:grid-row-2 md:grid-cols-4 ">
           <div className="row-span-2 col-span-2">
             <Link to="/detailsblog">
               <img
-                src="public/img/Carpets/Show-Carpets/06.jpg"
+                src="images/Carpets/Show-Carpets/06.jpg"
                 alt="Image"
                 className="rounded-xl w-full transition hover:brightness-75"
               />
@@ -382,7 +382,7 @@ export default function Blog() {
           <div className="row-span-1 col-span-1">
             <Link to="/detailsblog">
               <img
-                src="public/img/Carpets/Show-Carpets/06.jpg"
+                src="images/Carpets/Show-Carpets/06.jpg"
                 alt="Image"
                 className="rounded-xl w-full transition hover:brightness-75"
               />
@@ -400,7 +400,7 @@ export default function Blog() {
           <div className="row-span-1 col-span-1">
             <Link to="/detailsblog">
               <img
-                src="public/img/Carpets/Show-Carpets/06.jpg"
+                src="images/Carpets/Show-Carpets/06.jpg"
                 alt="Image"
                 className="rounded-xl w-full transition hover:brightness-75"
               />
@@ -418,7 +418,7 @@ export default function Blog() {
           <div className="row-span-1 col-span-1">
             <Link to="/detailsblog">
               <img
-                src="public/img/Carpets/Show-Carpets/06.jpg"
+                src="images/Carpets/Show-Carpets/06.jpg"
                 alt="Image"
                 className="rounded-xl w-full transition hover:brightness-75"
               />
@@ -436,7 +436,7 @@ export default function Blog() {
           <div className="row-span-1 col-span-1">
             <Link to="/detailsblog">
               <img
-                src="public/img/Carpets/Show-Carpets/06.jpg"
+                src="images/Carpets/Show-Carpets/06.jpg"
                 alt="Image"
                 className="rounded-xl w-full transition hover:brightness-75"
               />
@@ -459,7 +459,7 @@ export default function Blog() {
       {/* ////////////////////////////// MACHINE ////////////////////////////// */}
       <div className="overflow-hidden bg-[var(--colorTow)] relative text-white text-center font-[Shabnam-Medium]">
         <img
-          src="public/img/Asset.png"
+          src="images/Asset.png"
           className="absolute -top-32 sm:-top-1/3 right-1/2 translate-x-1/2 lg:translate-x-0 lg:-right-1/4 lg:top-1/2 lg:-translate-y-1/2 lg:h-full opacity-70"
         />
         <Link to="/blogs">
@@ -472,7 +472,7 @@ export default function Blog() {
             className="inline-block relative group rounded-xl overflow-hidden h-96 after:w-full after:h-full after:bg-gradient-to-t after:from-black after:to-transparent after:inline-block after:absolute after:bottom-0 after:right-0 after:opacity-40"
           >
             <img
-              src="public/img/Carpets/Show-Carpets/06.jpg"
+              src="images/Carpets/Show-Carpets/06.jpg"
               alt="Image"
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             />
@@ -488,7 +488,7 @@ export default function Blog() {
             className="inline-block relative group rounded-xl overflow-hidden h-96 after:w-full after:h-full after:bg-gradient-to-t after:from-black after:to-transparent after:inline-block after:absolute after:bottom-0 after:right-0 after:opacity-40"
           >
             <img
-              src="public/img/Carpets/Show-Carpets/06.jpg"
+              src="images/Carpets/Show-Carpets/06.jpg"
               alt="Image"
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             />
@@ -504,7 +504,7 @@ export default function Blog() {
             className="inline-block relative group rounded-xl overflow-hidden h-96 after:w-full after:h-full after:bg-gradient-to-t after:from-black after:to-transparent after:inline-block after:absolute after:bottom-0 after:right-0 after:opacity-40"
           >
             <img
-              src="public/img/Carpets/Show-Carpets/06.jpg"
+              src="images/Carpets/Show-Carpets/06.jpg"
               alt="Image"
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             />
@@ -520,7 +520,7 @@ export default function Blog() {
             className="inline-block relative group rounded-xl overflow-hidden h-96 after:w-full after:h-full after:bg-gradient-to-t after:from-black after:to-transparent after:inline-block after:absolute after:bottom-0 after:right-0 after:opacity-40"
           >
             <img
-              src="public/img/Carpets/Show-Carpets/06.jpg"
+              src="images/Carpets/Show-Carpets/06.jpg"
               alt="Image"
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             />

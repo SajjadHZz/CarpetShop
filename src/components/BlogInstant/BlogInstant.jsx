@@ -11,25 +11,25 @@ import { IoMdArrowDropleftCircle, IoMdArrowDroprightCircle } from "react-icons/i
 const blogDatas = [
   {
     id: 1,
-    src: "public/img/Carpets/Show-Carpets/decor-farsh-vintage-code-917.jpg",
+    src: "images/Carpets/Show-Carpets/decor-farsh-vintage-code-917.jpg",
     desc: "فرش دستبافت تبریز را چگونه تمیز نگه داریم ؟",
     date: "14 مهر 1402",
   },
   {
     id: 2,
-    src: "public/img/Carpets/Show-Carpets/decor-farsh-vintage-code-922.jpg",
+    src: "images/Carpets/Show-Carpets/decor-farsh-vintage-code-922.jpg",
     desc: "فرش ماشینی کرج را چگونه بشوییم ؟",
     date: "21 آبان 1401",
   },
   {
     id: 3,
-    src: "public/img/Carpets/Show-Carpets/decor-farsh-vintage-code-b34-abi.jpg",
+    src: "images/Carpets/Show-Carpets/decor-farsh-vintage-code-b34-abi.jpg",
     desc: "موکت ظریف مصور را چگونه تمیز نگه داریم ؟",
     date: "03 فروردین 1399",
   },
   {
     id: 4,
-    src: "public/img/Carpets/Show-Carpets/pahn-farsh-vintage-code-bp24-noqre.jpg",
+    src: "images/Carpets/Show-Carpets/pahn-farsh-vintage-code-bp24-noqre.jpg",
     desc: "فرش دستبافت کاشان را چگونه رفو کنیم ؟",
     date: "23 اسفند 1401",
   },
@@ -41,7 +41,7 @@ export default function BlogInstant() {
   const swiper = useRef();
 
   return (
-    <div className="blogInstant">
+    <div className="p-6 w-full lg:w-2/3 border-2 border-solid border-black bg-white">
       <div className="blogInstant__titleBox">
         <h2 className="blogInstant__title">جدیدترین مقالات منتشر شده</h2>
         <IoMdArrowDroprightCircle
