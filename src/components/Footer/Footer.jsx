@@ -1,20 +1,23 @@
-import React from "react";
+import React, { memo } from "react";
 
 import { BsInstagram } from "react-icons/bs";
 import { BiLogoFacebook, BiLogoTelegram } from "react-icons/bi";
 import { FaLinkedinIn } from "react-icons/fa";
 
-export default function Footer() {
+import { Link } from "react-router-dom";
+
+const Footer = memo(() => {
   return (
     <div className="w-full py-4 px-6 md:px-12 bg-[var(--colorTow)] text-white">
       <div className="w-full flex flex-col flex-wrap md:flex-row justify-between gap-5 border-b-[2px] border-solid border-white py-2 mb-4">
-        <div>
+        <div className="w-full xl:w-1/4">
           <h4 className="font-[Shabnam-Bold] text-2xl mb-4">درباره ما</h4>
           <p className="font-[Shabnam-Light] text-justify mb-2">
-            پیر مردی هر روز تو محله می دید پسر کی با کفش های پاره و پای برهنه با توپ پلاستیکی فوتبال بازی می
-            کند، روزی رفت ی کتانی نو خرید و اومد و به پسرک گفت بیا این کفشا رو بپوش…پسرک کفشا رو پوشید و
-            خوشحال رو به پیر مرد کرد و گفت: شما خدایید؟! پیر مرد لبش را گزید و گفت نه! پسرک گفت پس دوست خدایی،
-            چون من دیشب فقط به خدا گفتم كه کفش ندارم…
+            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+            چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد
+            نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد
+            گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای
+            هم فراهم کرد.
           </p>
           <div className="flex gap-2">
             <BsInstagram className="w-12 h-12 p-2 overflow-visible bg-white text-[var(--colorTow)] cursor-pointer transition-all hover:text-[var(--colorFive)] hover:scale-105" />
@@ -34,22 +37,36 @@ export default function Footer() {
 
           <div>
             <p className="font-[Shabnam-Light] text-justify mb-2">مشاوره و پشتیبانی : </p>
-            <p className="font-[Shabnam-Light] text-justify mb-2">09026043580</p>
+            <p className="font-[Shabnam-Light] text-end mb-2" dir="ltr">
+              ۰۹۰۲ ۶۰۴ ۳۵۸۰
+            </p>
           </div>
 
           <div>
             <p className="font-[Shabnam-Light] text-justify mb-2">ایمیل :</p>
-            <p className="font-[Shabnam-Light] text-justify mb-2">sahoza4@gmail.com</p>
+            <p className="font-[Shabnam-Light] text-justify mb-2">sajadhz1381@gmail.com</p>
           </div>
         </div>
         <div>
           <h4 className="font-[Shabnam-Bold] text-2xl mb-4">دسترسی سریع</h4>
-          <p className="font-[Shabnam-Light] text-justify mb-2">سوالات متداول</p>
-          <p className="font-[Shabnam-Light] text-justify mb-2">علاقه مندی ها</p>
-          <p className="font-[Shabnam-Light] text-justify mb-2">فرش ماشینی</p>
-          <p className="font-[Shabnam-Light] text-justify mb-2">فرش دستبافت</p>
-          <p className="font-[Shabnam-Light] text-justify mb-2">موکت</p>
-          <p className="font-[Shabnam-Light] text-justify mb-2">برندهای فرش ماشینی</p>
+          <Link to="/help" className="block font-[Shabnam-Light] text-justify mb-2">
+            سوالات متداول
+          </Link>
+          <Link to="/account" className="block font-[Shabnam-Light] text-justify mb-2">
+            علاقه مندی ها
+          </Link>
+          <Link to="/products" className="block font-[Shabnam-Light] text-justify mb-2">
+            فرش ماشینی
+          </Link>
+          <Link to="/products" className="block font-[Shabnam-Light] text-justify mb-2">
+            فرش دستبافت
+          </Link>
+          <Link to="/products" className="block font-[Shabnam-Light] text-justify mb-2">
+            موکت
+          </Link>
+          <Link to="/products" className="block font-[Shabnam-Light] text-justify mb-2">
+            برندهای فرش ماشینی
+          </Link>
         </div>
         <div>
           <h4 className="font-[Shabnam-Bold] text-2xl mb-4">مجوز ها</h4>
@@ -89,4 +106,5 @@ export default function Footer() {
       </div>
     </div>
   );
-}
+});
+export default Footer;

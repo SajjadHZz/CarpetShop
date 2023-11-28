@@ -15,7 +15,7 @@ export default function AboutUs() {
 
       {/* ////////////////////////////// BREADCRAMB //////////////////////////////// */}
 
-      <Breadcrumb />
+      <Breadcrumb thisPage="درباره ما" />
 
       {/* ////////////////////////////// ABOUT US //////////////////////////////// */}
       <div className="my-5 flex flex-col lg:flex-row justify-between gap-5 lg:gap-20 px-2 lg:px-16 font-[Shabnam-Light]">

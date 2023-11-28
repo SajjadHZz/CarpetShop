@@ -14,18 +14,20 @@ import ShippingLocation from "./pages/ShippingLocation/ShippingLocation";
 
 const routes = [
   { path: "/", element: <Home /> },
-  { path: "/detailsproduct", element: <DetailsProduct /> },
   { path: "/products", element: <Products /> },
+  { path: "/:productID", element: <DetailsProduct /> },
   { path: "/blog", element: <BlogHome /> },
   { path: "/blogs", element: <CategoryBlog /> },
   { path: "/detailsblog", element: <DetailsBlog /> },
-  { path: "/login", element: <Login /> },
+  { path: "/login", element: <Login status="login" /> },
+  { path: "/sign", element: <Login status="sign" /> },
   { path: "/about", element: <AboutUs /> },
   { path: "/help", element: <ShopHelp /> },
   { path: "/account", element: <UserAccount /> },
   { path: "/compare", element: <CompareProducts /> },
   { path: "/basket", element: <BasketShop /> },
   { path: "/location", element: <ShippingLocation /> },
+  { path: "*", element: <Home /> },
 ];
 
 export { routes };

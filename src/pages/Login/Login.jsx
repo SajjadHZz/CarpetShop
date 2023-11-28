@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { AiOutlineEyeInvisible } from "react-icons/ai";
 import { MdOutlineVisibility } from "react-icons/md";
@@ -8,8 +8,9 @@ import { Input, Button, Checkbox, Typography } from "@material-tailwind/react";
 
 import { Link } from "react-router-dom";
 
-export default function Login() {
-  const [pageSelect, setPageSelect] = useState(1);
+export default function Login({ status }) {
+  const [pageSelect, setPageSelect] = useState(status);
+
   return (
     <div className="relative flex justify-center items-center w-full h-[100vh]">
       <img
@@ -19,7 +20,8 @@ export default function Login() {
       />
       <div className="w-full lg:w-11/12 xl:w-3/4 backdrop-blur-xl bg-gray-200/[0.6] h-[90vh] px-2 py-6 lg:p-8 relative flex justify-between items-center gap-5 border-2 border-solid border-white rounded-3xl">
         {/* --------------------- LOGIN -------------------- */}
-        <div className="hidden md:inline-block w-1/2 lg:w-96">
+
+        <div className={`w-full md:w-1/2 lg:w-96 ${pageSelect === "login" || "hidden md:inline-block"}`}>
           <div className="flex flex-col items-center">
             <Link to="/">
               <img src="public/Logo.png" alt="Image" className="w-40" />
@@ -54,7 +56,9 @@ export default function Login() {
           <p className="text-center mt-5">
             <span className="font-[Shabnam-Light] text-xs ml-1">اگه هنوز ثبت نام نکردید،</span>
             <span
-              onClick={() => setPageSelect(1)}
+              onClick={() => {
+                setPageSelect("sign");
+              }}
               className="text-[var(--colorTow)] text-sm font-[Shabnam-Medium] cursor-pointer"
             >
               از اینجا عضو بشید
@@ -63,7 +67,12 @@ export default function Login() {
         </div>
 
         {/* --------------------- SIGN -------------------- */}
-        <div className="w-full md:w-1/2 lg:w-96 h-full overflow-y-auto none_scroolbar">
+
+        <div
+          className={`w-full md:w-1/2 lg:w-96 h-full overflow-y-auto none_scroolbar ${
+            pageSelect === "sign" || "hidden md:inline-block"
+          }`}
+        >
           <div className="flex flex-col items-center">
             <Link to="/">
               <img src="public/Logo.png" alt="Image" className="w-40" />
@@ -139,7 +148,9 @@ export default function Login() {
           <p className="text-center mt-3">
             <span className="font-[Shabnam-Light] text-xs">اگه قبلا عضو شدید، </span>
             <span
-              onClick={() => setPageSelect(0)}
+              onClick={() => {
+                setPageSelect("login");
+              }}
               className="text-[var(--colorTow)] text-sm font-[Shabnam-Medium] cursor-pointer"
             >
               از اینجا وارد بشید
@@ -150,7 +161,7 @@ export default function Login() {
         {/* --------------------- IMAGE -------------------- */}
         <div
           className={`hidden md:inline-block w-1/2 h-[calc(100%-1rem)] absolute left-0 rounded-3xl overflow-hidden m-2 transition-transform duration-700 ${
-            pageSelect === 0 ? "translate-x-0" : "translate-x-[97%]"
+            pageSelect === "sign" ? "translate-x-[97%]" : "translate-x-0"
           }`}
         >
           <img
@@ -162,7 +173,7 @@ export default function Login() {
             src="public/img/CarpetLoginForm.png"
             alt=""
             className={`w-2/3 select-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-transform duration-500 ${
-              pageSelect === 0 ? "scale-x-100" : "-scale-x-100"
+              pageSelect === "sign" ? "-scale-x-100" : "scale-x-100"
             }`}
           />
         </div>

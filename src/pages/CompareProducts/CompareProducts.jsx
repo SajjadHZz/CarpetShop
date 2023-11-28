@@ -5,7 +5,7 @@ import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import Footer from "../../components/Footer/Footer";
 
 import { machineProducts } from "../../Datas";
-const productsSelected = machineProducts.splice(0, 2);
+const productsSelected = [...machineProducts].splice(0, 2);
 
 import { Link } from "react-router-dom";
 

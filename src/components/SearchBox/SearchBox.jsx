@@ -77,7 +77,7 @@ export default function SearchBox() {
         } flex-col absolute z-[1] shadow-xl bg-[var(--colorFour)] top-3 pt-8 rounded-xl w-full max-h-60 overflow-hidden`}
       >
         <Link
-          to="/detailsproduct"
+          to="/1"
           className="flex items-center justify-between gap-3 w-full p-2 cursor-pointer transition hover:bg-gray-50 "
         >
           <div>
@@ -87,7 +87,7 @@ export default function SearchBox() {
           <p className="text-sm text-[var(--colorFive)] font-bold">2,345,000 تومان</p>
         </Link>
         <Link
-          to="/detailsproduct"
+          to="/2"
           className="flex items-center justify-between gap-3 w-full p-2 cursor-pointer transition hover:bg-gray-50 "
         >
           <div>

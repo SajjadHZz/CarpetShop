@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, memo, useContext } from "react";
 import "./ProductsSlider.css";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -29,23 +29,27 @@ const screenWidth =
     ? 1.25
     : 1;
 
-export default function ProductsSlider({ titleSlider }) {
+import QuickAccessModal from "../../context/QuickAccessModal";
+
+const ProductsSlider = memo(({ titleSlider }) => {
+  const { openQuicklyModal, setOpenQuicklyModal, setProductChosedId } = useContext(QuickAccessModal);
+
   const swiper = useRef();
   return (
     <div className="sliderProducts">
       <div className="sliderProducts__titleBoxCont">
         <h3 className="sliderProducts__titleSlider">{titleSlider}</h3>
         <div className="sliderProducts__linkShowAll">
-          <Link to="/detailsproduct">مشاهده همه ⬅</Link>
+          <Link to="/products">مشاهده همه ⬅</Link>
         </div>
       </div>
       <Swiper slidesPerView={screenWidth} ref={swiper}>
         {machineProducts.map((item) => {
           return (
             <SwiperSlide key={item.id}>
-              <Link to="/detailsproduct">
-                <div className="sliderProducts__container">
-                  <div className="sliderProducts__imgCont">
+              <div className="sliderProducts__container">
+                <div className="sliderProducts__imgCont">
+                  <Link to={`/${item.id}`}>
                     {item.discount && (
                       <div className="sliderProducts__productDiscount">
                         <p className="bg-white text-[var(--colorFive)] px-2 py-0.5 rounded-full">فروش ویژه</p>
@@ -58,25 +62,33 @@ export default function ProductsSlider({ titleSlider }) {
                       src={item.srcGallery[0]}
                       alt="Product Image"
                       className="sliderProducts__imgProduct"
-                    />
-                    <div className="sliderProducts__iconCont backdrop-blur bg-opacity-50">
-                      <Tooltip className="font-[Shabnam-Light]" placement="left" content="افزودن به سبد">
-                        <IconButton className="w-6 h-6 text-black bg-transparent shadow-none hover:shadow-none">
-                          <RiShoppingBasketLine className="sliderProducts__icon" />
-                        </IconButton>
-                      </Tooltip>
-                      <Tooltip className="font-[Shabnam-Light]" placement="left" content="دوستش دارم">
-                        <IconButton className="w-6 h-6 text-black bg-transparent shadow-none hover:shadow-none">
-                          <AiOutlineHeart className="sliderProducts__icon" />
-                        </IconButton>
-                      </Tooltip>
-                      <Tooltip className="font-[Shabnam-Light]" placement="left" content="مشاهده سریع">
-                        <IconButton className="w-6 h-6 text-black bg-transparent shadow-none hover:shadow-none">
-                          <BiSearchAlt className="sliderProducts__icon" />
-                        </IconButton>
-                      </Tooltip>
-                    </div>
+                    />{" "}
+                  </Link>
+                  <div className="sliderProducts__iconCont backdrop-blur bg-opacity-50">
+                    <Tooltip className="font-[Shabnam-Light]" placement="left" content="افزودن به سبد">
+                      <IconButton className="w-6 h-6 text-black bg-transparent shadow-none hover:shadow-none">
+                        <RiShoppingBasketLine className="sliderProducts__icon" />
+                      </IconButton>
+                    </Tooltip>
+                    <Tooltip className="font-[Shabnam-Light]" placement="left" content="دوستش دارم">
+                      <IconButton className="w-6 h-6 text-black bg-transparent shadow-none hover:shadow-none">
+                        <AiOutlineHeart className="sliderProducts__icon" />
+                      </IconButton>
+                    </Tooltip>
+                    <Tooltip className="font-[Shabnam-Light]" placement="left" content="مشاهده سریع">
+                      <IconButton
+                        onClick={() => {
+                          setOpenQuicklyModal(!openQuicklyModal);
+                          setProductChosedId(item.id - 1);
+                        }}
+                        className="w-6 h-6 text-black bg-transparent shadow-none hover:shadow-none"
+                      >
+                        <BiSearchAlt className="sliderProducts__icon" />
+                      </IconButton>
+                    </Tooltip>
                   </div>
+                </div>
+                <Link to={`/${item.id}`}>
                   <h5 className="sliderProducts__productTitle">{item.title}</h5>
                   <div className="sliderProducts__priceCont">
                     {item.discount && (
@@ -85,11 +97,18 @@ export default function ProductsSlider({ titleSlider }) {
                       </p>
                     )}
                     <p className="sliderProducts__nowPrice ">
-                      {item.dimensions[0].price.toLocaleString("fa-ir")} تومان
+                      {item.discount
+                        ? (
+                            Math.floor(
+                              (item.dimensions[0].price * (1 - item.discount.percent / 100)) / 1000
+                            ) * 1000
+                          ).toLocaleString("fa-ir")
+                        : item.dimensions[0].price.toLocaleString("fa-ir")}
+                      تومان
                     </p>
                   </div>
-                </div>
-              </Link>
+                </Link>
+              </div>
             </SwiperSlide>
           );
         })}
@@ -108,4 +127,5 @@ export default function ProductsSlider({ titleSlider }) {
       ></div>
     </div>
   );
-}
+});
+export default ProductsSlider;

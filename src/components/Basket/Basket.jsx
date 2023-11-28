@@ -19,9 +19,9 @@ export default function Basket() {
       <div className="-right-16 top-10 hidden w-80 min-w-80 border border-solid border-white text-sm absolute z-[6] shadow-xl md:group-hover:inline-block">
         <div className="bg-[var(--colorFour)] shadow p-1 h-60 overflow-y-auto">
           <div className="bg-white m-2 p-3 rounded">
-            <Link to="/detailsproduct" className="flex justify-between g-3">
+            <Link to="/1" className="flex justify-between g-3">
               <img src="public/img/Carpets/07.jpg" alt="Product Image" className="w-16 h-16 object-cover" />
-              <p className="mr-2 font-bold">فرش طرح افشان گل گلی رنگ طوسی مدل زیباسرا</p>
+              <p className="mr-2 font-bold">فرش 1200 شانه طرح افشان رنگ طوسی گل برجسته</p>
             </Link>
             <div className="flex justify-between items-center text-lg mt-2">
               <p className="text-xs">

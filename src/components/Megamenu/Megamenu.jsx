@@ -12,19 +12,24 @@ import { Link } from "react-router-dom";
 
 export default function Megamenu() {
   const [category, setCategory] = useState(machineCategory);
+  const [categoryImg, setCategoryImg] = useState(productsCategory[0].src);
   const mouseEnterHandler = (category) => {
     switch (category) {
       case "machine":
         setCategory(machineCategory);
+        setCategoryImg(productsCategory[0].src);
         break;
       case "handmade":
         setCategory(handmadeCategory);
+        setCategoryImg(productsCategory[1].src);
         break;
       case "carpet":
         setCategory(carpetCategory);
+        setCategoryImg(productsCategory[2].src);
         break;
       case "brands":
         setCategory(brandCategory);
+        setCategoryImg(productsCategory[3].src);
         break;
     }
   };
@@ -67,11 +72,7 @@ export default function Megamenu() {
             );
           })}
         </ul>
-        <img
-          src="public/img/Carpets/Show-Carpets/decor-farsh-vintage-code-917.jpg"
-          alt="Image Carpet"
-          className="w-48 h-full object-cover"
-        />
+        <img src={categoryImg} alt="Image Carpet" className="w-48 h-full object-cover" />
       </li>
     </ul>
   );

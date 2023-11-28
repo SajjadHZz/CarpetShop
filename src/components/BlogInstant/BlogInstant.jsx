@@ -41,7 +41,7 @@ export default function BlogInstant() {
   const swiper = useRef();
 
   return (
-    <div className="blogInstant">
+    <div className="p-6 w-full lg:w-2/3 border-2 border-solid border-black bg-white">
       <div className="blogInstant__titleBox">
         <h2 className="blogInstant__title">جدیدترین مقالات منتشر شده</h2>
         <IoMdArrowDroprightCircle

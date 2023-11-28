@@ -9,21 +9,32 @@ const comments = [
   {
     id: 1,
     user: "سجاد حسین زاده",
-    comment: "من از خرید از سایت شما راضی هستم.",
+    comment:
+      "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.",
   },
   {
     id: 2,
     user: "علیرضا مهدی پور",
-    comment: "این سایت خیلی مضخرف و به درد نخور بود.",
+    comment:
+      "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.",
   },
-  { id: 3, user: "خسرو مهربان", comment: "ممنون از سایت خوبتون ❤" },
-  { id: 4, user: "علی ضیا", comment: "این سایته یا بازار شام ؟ ￣へ￣" },
+  {
+    id: 3,
+    user: "خسرو هدایتی",
+    comment: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.❤",
+  },
+  {
+    id: 4,
+    user: "علی رحمانی",
+    comment:
+      "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.",
+  },
 ];
 
 export default function CustomersComments() {
   const swiper = useRef();
   return (
-    <div className="w-11/12 mx-auto px-2 md:px-6 my-8 border-2 border-solid border-black relative font-[Shabnam-Light] py-12 bg-white">
+    <div className="w-full lg:w-1/3 mt-4 lg:m-0 border-2 border-solid border-black relative font-[Shabnam-Light] py-12 bg-white">
       <div className="absolute w-full -top-5 right-1/2 translate-x-1/2 flex justify-center items-center gap-4 z-[1]">
         <button
           onClick={() => {
@@ -48,8 +59,8 @@ export default function CustomersComments() {
       <Swiper slidesPerView={1} spaceBetween={20} ref={swiper} loop={true}>
         {comments.map((item) => (
           <SwiperSlide key={item.id}>
-            <div className="flex flex-col gap-3 items-center text-center md:text-start md:flex-row md:justify-between">
-              <p className="customersComments__comment">" {item.comment} "</p>
+            <div className="flex flex-col gap-3 justify-center items-center text-center">
+              <p className="customersComments__comment text-justify px-4">" {item.comment} "</p>
               <p className="text-[var(--colorTow)] font-bold">{item.user}</p>
             </div>
           </SwiperSlide>
