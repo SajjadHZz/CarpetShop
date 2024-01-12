@@ -32,7 +32,7 @@ const machineProducts = [
     ],
     discount: {
       percent: 5,
-      timeDiscount: "2023/12/7",
+      timeDiscount: "2024/2/7",
     },
     labels: ["پذیرایی", "آشپزخانه", "اتاق خواب"],
   },
@@ -141,7 +141,7 @@ const machineProducts = [
 
     discount: {
       percent: 8,
-      timeDiscount: "2023/12/3",
+      timeDiscount: "2024/12/3",
     },
     labels: ["آشپزخانه", "اتاق خواب", "پذیرایی", "محل کار"],
   },
@@ -235,7 +235,7 @@ const machineProducts = [
 
     discount: {
       percent: 2,
-      timeDiscount: "2023/12/22",
+      timeDiscount: "2024/6/22",
     },
     labels: ["پذیرایی", "آشپزخانه"],
   },
@@ -296,7 +296,7 @@ const machineProducts = [
     ],
     discount: {
       percent: 10,
-      timeDiscount: "2024/1/2",
+      timeDiscount: "2024/3/2",
     },
     labels: ["آشپزخانه", "اتاق خواب"],
   },
@@ -319,7 +319,7 @@ const machineProducts = [
     dimensions: [{ metter: 6, price: 1_278_000 }],
     discount: {
       percent: 1,
-      timeDiscount: "2023/12/28",
+      timeDiscount: "2024/10/28",
     },
     labels: ["مدرن و فانتزی", "آشپزخانه"],
   },
@@ -385,7 +385,7 @@ const machineProducts = [
 
     discount: {
       percent: 8,
-      timeDiscount: "2023/12/22",
+      timeDiscount: "2024/5/2",
     },
     labels: ["پذیرایی", "اشپزخانه"],
   },
